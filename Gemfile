@@ -12,7 +12,7 @@ gem 'turbolinks'
 gem 'devise'
 gem 'rspec-rails'
 gem 'haml-rails'
-
+gem 'simple_form'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

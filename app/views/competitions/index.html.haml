@@ -1,0 +1,13 @@
+%h1 Competitions
+
+%table
+  %tr
+    %th Competition
+    %th Entries Close At
+  - @competitions.each do |competition|
+    %tr
+      %td= link_to competition.title, competition
+      %td= competition.entries_close_at
+
+- if current_user.admin?
+  = link_to 'Create Competition', new_competition_path

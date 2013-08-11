@@ -1,0 +1,6 @@
+%h1
+  Competition:
+  = @competition.title
+
+- if current_user.admin?
+  = link_to 'Edit', edit_competition_path(@competition)
