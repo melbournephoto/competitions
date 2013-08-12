@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130809111325) do
+ActiveRecord::Schema.define(version: 20130811040142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,19 @@ ActiveRecord::Schema.define(version: 20130809111325) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "sections", force: true do |t|
+    t.integer  "competition_id"
+    t.string   "title"
+    t.integer  "entry_limit"
+    t.integer  "max_height"
+    t.integer  "max_width"
+    t.integer  "max_file_size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sections", ["competition_id"], name: "index_sections_on_competition_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
