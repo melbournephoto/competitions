@@ -3,6 +3,7 @@ Competitions::Application.routes.draw do
 
   resources :competitions do
     resources :sections
+    resources :entries
   end
   root to: 'competitions#index'
 end

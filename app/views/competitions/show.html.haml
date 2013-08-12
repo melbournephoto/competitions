@@ -19,6 +19,25 @@
       %td= section.max_file_size
       %td= link_to 'Edit', edit_competition_section_path(@competition, section)
 
+%h2 Your Entries
+- if @entries.empty?
+  You have no entries
+- else
+  %table.your_entries
+    %tr
+      %th
+        %th Title
+        %th Section
+    - @entries.each do |entry|
+      %tr
+        %td= image_tag entry.photo.thumb.url
+        %td= entry.title
+        %td= entry.section.title
+        %td= link_to 'Edit', edit_competition_entry_path(@competition, entry)
+
+- if @competition.open_for_entry?
+  = link_to 'New Entry', new_competition_entry_path(@competition)
+
 - if current_user.admin?
   = link_to 'Edit', edit_competition_path(@competition)
   = link_to 'Add Section', new_competition_section_path(@competition)

@@ -1,5 +1,6 @@
 class CompetitionsController < ApplicationController
   before_filter :require_admin, except: [:index, :show]
+
   def index
     @competitions = Competition.all
   end
@@ -19,6 +20,7 @@ class CompetitionsController < ApplicationController
 
   def show
     @competition = Competition.find(params[:id])
+    @entries = Entry.where(competition: @competition, user: current_user)
   end
 
   def edit
