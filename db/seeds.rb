@@ -62,3 +62,9 @@ competitions.each do |name, closing_date_string|
     )
   end
 end
+
+Rating.find_or_create_by(title: 'Entry', points: 1)
+Rating.find_or_create_by(title: 'Commended', points: 3)
+Rating.find_or_create_by(title: 'Highly Commended', points: 5)
+Rating.find_or_create_by(title: 'Best Colour Photo', points: 6, max_per_competition: 1)
+Rating.find_or_create_by(title: 'Best Monochrome Photo', points: 6, max_per_competition: 1)

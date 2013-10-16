@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130812081056) do
+ActiveRecord::Schema.define(version: 20131016100303) do
 
   create_table "competitions", force: true do |t|
     t.string   "title"
@@ -36,6 +36,15 @@ ActiveRecord::Schema.define(version: 20130812081056) do
   add_index "entries", ["competition_id"], name: "index_entries_on_competition_id", using: :btree
   add_index "entries", ["section_id"], name: "index_entries_on_section_id", using: :btree
   add_index "entries", ["user_id"], name: "index_entries_on_user_id", using: :btree
+
+  create_table "ratings", force: true do |t|
+    t.string   "title"
+    t.integer  "points",              default: 0, null: false
+    t.integer  "max_per_grade",       default: 0, null: false
+    t.integer  "max_per_competition", default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sections", force: true do |t|
     t.integer  "competition_id"
