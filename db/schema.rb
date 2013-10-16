@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20131016100303) do
     t.integer  "user_id"
     t.integer  "competition_id"
     t.integer  "section_id"
+    t.integer  "rating_id"
     t.string   "title"
     t.string   "photo"
     t.datetime "created_at"

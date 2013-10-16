@@ -2,6 +2,7 @@ class Entry < ActiveRecord::Base
   belongs_to :user
   belongs_to :competition
   belongs_to :section
+  belongs_to :rating
 
   mount_uploader :photo, PhotoUploader
 
