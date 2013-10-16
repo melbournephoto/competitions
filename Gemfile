@@ -10,15 +10,26 @@ gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'devise'
-gem 'rspec-rails'
 gem 'haml-rails'
 gem 'simple_form'
-gem 'timecop', '~> 0.6.3'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'capybara'
-gem 'launchy'
 gem 'awesome_print'
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
+
+group :test do
+  gem 'timecop', '~> 0.6.3'
+end
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'launchy'
+end
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
