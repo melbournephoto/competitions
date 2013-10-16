@@ -5,6 +5,7 @@ class CreateCompetitions < ActiveRecord::Migration
       t.datetime :entries_open_at
       t.datetime :entries_close_at
       t.datetime :results_published_at
+      t.string :judge_key
       t.text :notes
 
       t.timestamps

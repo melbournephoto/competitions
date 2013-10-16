@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20131016100303) do
     t.datetime "entries_open_at"
     t.datetime "entries_close_at"
     t.datetime "results_published_at"
+    t.string   "judge_key"
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"

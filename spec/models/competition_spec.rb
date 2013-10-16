@@ -26,4 +26,8 @@ describe Competition do
       it { should_not be_open_for_entry }
     end
   end
+
+  it "sets a judges key" do
+    expect(competition.judge_key).to_not be_blank
+  end
 end
