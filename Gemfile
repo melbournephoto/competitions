@@ -29,6 +29,8 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'launchy'
+  gem 'guard'
+  gem 'guard-rspec'
 end
 
 group :doc do
