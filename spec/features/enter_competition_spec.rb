@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "enter a photo in a competition" do
   before do
     user = User.create!(email: 'ludivico@melbournephoto.org.au', password: 'password')
-    competition = Competition.create!(title: 'EDI', entries_open_at: 1.month.ago, entries_close_at: 1.month.from_now)
+    competition = Competition.create!(title: 'EDI', entries_open_at: 1.month.ago, entries_close_at: 1.month.from_now, results_published_at: 2.months.from_now)
     competition.sections.create!(title: 'Open', max_file_size: 1, max_width: 1200, max_height: 1200, entry_limit: 1)
     visit '/'
 

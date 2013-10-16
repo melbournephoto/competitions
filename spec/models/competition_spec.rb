@@ -1,10 +1,12 @@
 require 'spec_helper'
 
 describe Competition do
+  let(:entries_open_at) { 1.month.from_now }
+  let(:entries_close_at) { 2.months.from_now }
+  let(:results_published_at) { 3.months.from_now }
+  let(:competition) { Competition.create!(title: 'EDI', entries_open_at: entries_open_at, entries_close_at: entries_close_at, results_published_at: results_published_at) }
+
   describe "open for entry" do
-    let(:entries_open_at) { 1.month.from_now }
-    let(:entries_close_at) { 2.months.from_now }
-    let(:competition) { Competition.create!(title: 'EDI', entries_open_at: entries_open_at, entries_close_at: entries_close_at) }
     subject { competition }
 
     describe "isn't open for entry before entries_open_at" do
