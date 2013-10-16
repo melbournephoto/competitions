@@ -2,6 +2,7 @@ class Competition < ActiveRecord::Base
   validates :title, presence: true
   validates :entries_open_at, presence: true
   validates :entries_close_at, presence: true
+  validates :results_published_at, presence: true
 
   has_many :sections, dependent: :destroy
   has_many :entries, dependent: :destroy
