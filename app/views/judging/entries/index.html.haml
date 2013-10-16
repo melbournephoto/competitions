@@ -1,0 +1,13 @@
+%h1
+  Entries for
+  = @competition.title
+
+%table
+  - @entries.each do |entry|
+    %tr
+      %td= image_tag entry.photo.thumb.url
+      %td
+        - if entry.rating
+          = entry.rating.title
+
+      %td= link_to 'Rate', judging_entry_path(entry)
