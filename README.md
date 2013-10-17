@@ -2,7 +2,7 @@ Melbourne Camera Club Competition System
 ========================================
 
 [![wercker status](https://app.wercker.com/status/7118ec24fb681228760ffa3abc2ec386/m "wercker status")](https://app.wercker.com/project/bykey/7118ec24fb681228760ffa3abc2ec386)
-[![Code Climate](https://codeclimate.com/repos/52095505f3ea0024b8080224/badges/5311698d2fb580e295d0/gpa.png)](https://codeclimate.com/repos/52095505f3ea0024b8080224/feed)
+[![Code Climate](https://codeclimate.com/github/melbournephoto/competitions.png)](https://codeclimate.com/github/melbournephoto/competitions)
 
 Used for managing our club's competitions. Released under the MIT license.
 
