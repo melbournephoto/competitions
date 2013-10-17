@@ -1,0 +1,7 @@
+language: ruby
+rvm:
+  - 2.0.0
+services: mysql
+before_script:
+  - mysql -e 'create database competitions_test;'
+  - cp config/database.yml.travis config/database.yml
