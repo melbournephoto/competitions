@@ -10,6 +10,8 @@ class Entry < ActiveRecord::Base
   validates :section_id, presence: true
   validate :file
 
+  scope :not_rated, -> { where(rating_id: nil) }
+
   def file
     return if section.nil? || photo.nil?
     if photo.size > section.max_file_size.megabytes

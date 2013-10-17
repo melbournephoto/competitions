@@ -3,11 +3,16 @@
   = @competition.title
 
 %table
+  %tr
+    %th
+    %th Rating
+    %th Notes
   - @entries.each do |entry|
     %tr
       %td= image_tag entry.photo.thumb.url
       %td
         - if entry.rating
           = entry.rating.title
+      %td= entry.notes
 
-      %td= link_to 'Rate', judging_entry_path(entry)
+      %td= link_to 'Rate', edit_judging_entry_path(entry)

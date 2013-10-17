@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20131016100303) do
     t.integer  "rating_id"
     t.string   "title"
     t.string   "photo"
+    t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

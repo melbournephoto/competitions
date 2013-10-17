@@ -1,0 +1,8 @@
+= image_tag @entry.photo.url
+
+= simple_form_for [:judging, @entry] do |f|
+  = f.input :rating_id, collection: Rating.all
+  = f.input :notes, input_html: { cols: 80, rows: 5 }
+
+  = f.submit 'Save and back to Entries'
+  = f.submit 'Save and next unrated', name: 'next_unrated'

@@ -7,6 +7,7 @@ class CreateEntries < ActiveRecord::Migration
       t.references :rating
       t.string :title
       t.string :photo
+      t.text :notes
 
       t.timestamps
     end
