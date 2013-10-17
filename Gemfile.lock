@@ -53,6 +53,12 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    coveralls (0.7.0)
+      multi_json (~> 1.3)
+      rest-client
+      simplecov (>= 0.7)
+      term-ansicolor
+      thor
     debug_inspector (0.0.2)
     devise (3.0.2)
       bcrypt-ruby (~> 3.0)
@@ -137,6 +143,8 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.5)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     rmagick (2.13.2)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
@@ -164,6 +172,10 @@ GEM
     simple_form (3.0.0.rc)
       actionpack (>= 4.0.0.rc1, < 4.1)
       activemodel (>= 4.0.0.rc1, < 4.1)
+    simplecov (0.7.1)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.7.1)
+    simplecov-html (0.7.1)
     slop (3.4.6)
     sprockets (2.10.0)
       hike (~> 1.2)
@@ -174,6 +186,8 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    term-ansicolor (1.2.2)
+      tins (~> 0.8)
     therubyracer (0.11.4)
       libv8 (~> 3.11.8.12)
       ref
@@ -182,6 +196,7 @@ GEM
       atomic
     tilt (1.4.1)
     timecop (0.6.3)
+    tins (0.12.0)
     treetop (1.4.14)
       polyglot
       polyglot (>= 0.3.1)
@@ -205,6 +220,7 @@ DEPENDENCIES
   binding_of_caller
   capybara
   carrierwave
+  coveralls
   devise
   guard
   guard-rspec

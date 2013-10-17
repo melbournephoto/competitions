@@ -31,6 +31,7 @@ group :development, :test do
   gem 'launchy'
   gem 'guard'
   gem 'guard-rspec'
+  gem 'coveralls', require: false
 end
 
 group :doc do
