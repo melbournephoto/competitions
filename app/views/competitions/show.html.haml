@@ -17,7 +17,7 @@
       %td= section.max_height
       %td= section.max_width
       %td= section.max_file_size
-      %td= link_to 'Edit', edit_competition_section_path(@competition, section)
+      %td= link_to 'Edit', edit_competition_section_path(@competition, section) if current_user.admin?
 
 %h2 Your Entries
 - if @entries.empty?
