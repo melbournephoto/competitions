@@ -5,6 +5,7 @@ class CreateEntries < ActiveRecord::Migration
       t.references :competition, index: true
       t.references :section, index: true
       t.references :rating
+      t.references :grade, index: true
       t.string :title
       t.string :photo
       t.text :notes

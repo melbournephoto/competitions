@@ -2,17 +2,27 @@ require 'spec_helper'
 
 describe "enter a photo in a competition" do
   before do
-    user = User.create!(email: 'ludivico@melbournephoto.org.au', password: 'password')
-    competition = Competition.create!(title: 'EDI', entries_open_at: 1.month.ago, entries_close_at: 1.month.from_now, results_published_at: 2.months.from_now)
-    competition.sections.create!(title: 'Open', max_file_size: 1, max_width: 1200, max_height: 1200, entry_limit: 1)
+    @user = FactoryGirl.create :user
+    @competition = FactoryGirl.create :competition, title: 'EDI'
+    @competition.sections.create!(title: 'Open', max_file_size: 1, max_width: 1200, max_height: 1200, entry_limit: 1)
+    @a_grade = FactoryGirl.create :grade, title: 'A Grade'
+    @b_grade = FactoryGirl.create :grade, title: 'B Grade'
+
     visit '/'
 
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
+    fill_in 'Email', with: @user.email
+    fill_in 'Password', with: @user.password
     click_button 'Sign in'
   end
 
-  it "uploads a valid file" do
+  it "uploads a valid file with no grade set" do
+    click_link 'Competitions'
+    click_link 'EDI'
+    click_link 'New Entry'
+
+    expect(page).to have_content 'Select your grade'
+    select 'B Grade', from: 'Grade'
+    click_button 'Save'
 
     click_link 'Competitions'
     click_link 'EDI'
@@ -28,6 +38,8 @@ describe "enter a photo in a competition" do
   end
 
   it "tries to upload a photo without a section" do
+    CompetitionSeriesGrade.create!(user: @user, competition_series: @competition.competition_series, grade: @b_grade)
+
     click_link 'Competitions'
     click_link 'EDI'
     click_link 'New Entry'
@@ -41,6 +53,8 @@ describe "enter a photo in a competition" do
   end
 
   it "tries to upload to a full section" do
+    CompetitionSeriesGrade.create!(user: @user, competition_series: @competition.competition_series, grade: @b_grade)
+
     click_link 'Competitions'
     click_link 'EDI'
     click_link 'New Entry'
@@ -61,6 +75,8 @@ describe "enter a photo in a competition" do
   end
 
   it "edits an existing entry" do
+    CompetitionSeriesGrade.create!(user: @user, competition_series: @competition.competition_series, grade: @b_grade)
+
     click_link 'Competitions'
     click_link 'EDI'
     click_link 'New Entry'

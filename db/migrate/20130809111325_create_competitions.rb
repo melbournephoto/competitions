@@ -1,6 +1,7 @@
 class CreateCompetitions < ActiveRecord::Migration
   def change
     create_table :competitions do |t|
+      t.references :competition_series, index: true
       t.string :title
       t.datetime :entries_open_at
       t.datetime :entries_close_at

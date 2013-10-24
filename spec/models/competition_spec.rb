@@ -1,10 +1,13 @@
 require 'spec_helper'
 
 describe Competition do
+  it "creates a valid model" do
+    expect(-> { FactoryGirl.create(:competition) }).not_to raise_error
+  end
   let(:entries_open_at) { 1.month.from_now }
   let(:entries_close_at) { 2.months.from_now }
   let(:results_published_at) { 3.months.from_now }
-  let(:competition) { Competition.create!(title: 'EDI', entries_open_at: entries_open_at, entries_close_at: entries_close_at, results_published_at: results_published_at) }
+  let(:competition) { FactoryGirl.create(:competition, title: 'EDI', entries_open_at: entries_open_at, entries_close_at: entries_close_at, results_published_at: results_published_at) }
 
   describe "open for entry" do
     subject { competition }

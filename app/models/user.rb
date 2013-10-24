@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :entries, dependent: :destroy
+  has_many :competition_series_grades
 end

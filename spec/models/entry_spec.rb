@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe Entry do
+  it "creates valid model" do
+    expect(-> { FactoryGirl.create :entry }).not_to raise_error
+  end
+
   describe "title" do
     let(:title) { nil }
     let(:entry) { Entry.new(title: title) }

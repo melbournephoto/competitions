@@ -33,6 +33,7 @@ group :development, :test do
   gem 'guard'
   gem 'guard-rspec'
   gem 'coveralls', require: false
+  gem 'factory_girl_rails'
 end
 
 group :doc do

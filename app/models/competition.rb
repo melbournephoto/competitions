@@ -4,9 +4,11 @@ class Competition < ActiveRecord::Base
   validates :entries_close_at, presence: true
   validates :results_published_at, presence: true
   validates :judge_key, presence: true, uniqueness: true
+  validates :competition_series_id, presence: true
 
   has_many :sections, dependent: :destroy
   has_many :entries, dependent: :destroy
+  belongs_to :competition_series
 
   before_validation :set_judge_key
 

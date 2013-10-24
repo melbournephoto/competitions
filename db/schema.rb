@@ -11,9 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131016100303) do
+ActiveRecord::Schema.define(version: 20131017205900) do
+
+  create_table "competition_series", force: true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "competition_series_grades", force: true do |t|
+    t.integer  "competition_series_id", null: false
+    t.integer  "grade_id",              null: false
+    t.integer  "user_id",               null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "competition_series_grades", ["competition_series_id"], name: "index_competition_series_grades_on_competition_series_id", using: :btree
+  add_index "competition_series_grades", ["grade_id"], name: "index_competition_series_grades_on_grade_id", using: :btree
+  add_index "competition_series_grades", ["user_id"], name: "index_competition_series_grades_on_user_id", using: :btree
 
   create_table "competitions", force: true do |t|
+    t.integer  "competition_series_id"
     t.string   "title"
     t.datetime "entries_open_at"
     t.datetime "entries_close_at"
@@ -24,11 +43,14 @@ ActiveRecord::Schema.define(version: 20131016100303) do
     t.datetime "updated_at"
   end
 
+  add_index "competitions", ["competition_series_id"], name: "index_competitions_on_competition_series_id", using: :btree
+
   create_table "entries", force: true do |t|
     t.integer  "user_id"
     t.integer  "competition_id"
     t.integer  "section_id"
     t.integer  "rating_id"
+    t.integer  "grade_id"
     t.string   "title"
     t.string   "photo"
     t.text     "notes"
@@ -37,8 +59,15 @@ ActiveRecord::Schema.define(version: 20131016100303) do
   end
 
   add_index "entries", ["competition_id"], name: "index_entries_on_competition_id", using: :btree
+  add_index "entries", ["grade_id"], name: "index_entries_on_grade_id", using: :btree
   add_index "entries", ["section_id"], name: "index_entries_on_section_id", using: :btree
   add_index "entries", ["user_id"], name: "index_entries_on_user_id", using: :btree
+
+  create_table "grades", force: true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "ratings", force: true do |t|
     t.string   "title"
