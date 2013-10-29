@@ -14,6 +14,11 @@ user = User.find_or_create_by!(email: 'alan@alanharper.com.au', admin: 1) do |us
   user.password_confirmation = 'password'
 end
 
+user = User.find_or_create_by!(email: 'ludovico@melbournephoto.org.au') do |user|
+  user.password = 'password'
+  user.password_confirmation = 'password'
+end
+
 competition_series = CompetitionSeries.find_or_create_by!(title: 'EDI 2014')
 
 competitions = {
