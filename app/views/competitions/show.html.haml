@@ -37,6 +37,7 @@
         %td= entry.section.title
         %td= entry.grade.title
         %td= link_to 'Edit', edit_competition_entry_path(@competition, entry)
+        %td= link_to 'Delete Entry', competition_entry_path(@competition, entry), method: :delete, confirmation: "Are you sure you wish to delete this entry?"
 
 - if @competition.open_for_entry?
   = link_to 'New Entry', new_competition_entry_path(@competition)
