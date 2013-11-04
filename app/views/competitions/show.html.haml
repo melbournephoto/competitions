@@ -46,3 +46,4 @@
 - if current_user.admin?
   = link_to 'Edit Competition', edit_competition_path(@competition)
   = link_to 'Add Section', new_competition_section_path(@competition)
+  = link_to 'E-Mail Judging Link', new_competition_email_judging_link_path(@competition)

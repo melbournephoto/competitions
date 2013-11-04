@@ -4,6 +4,7 @@ Competitions::Application.routes.draw do
   resources :competitions do
     resources :sections
     resources :entries
+    resources :email_judging_links
   end
 
   resources :competition_series_grades

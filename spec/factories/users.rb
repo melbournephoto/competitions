@@ -2,7 +2,11 @@
 
 FactoryGirl.define do
   factory :user do
-  	email 'ludivico@melbournephoto.org.au'
-  	password 'password'
+    email 'ludivico@melbournephoto.org.au'
+    password 'password'
+
+    trait :admin do
+      admin true
+    end
   end
 end

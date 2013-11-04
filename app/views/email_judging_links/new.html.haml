@@ -1,0 +1,8 @@
+%h1 Send Judging Link
+
+%p This page will send a special link for a judge to login and judge this competition only
+
+= simple_form_for [@competition, @email_judging_link] do |f|
+  = f.input :email
+
+  = f.submit 'Send'

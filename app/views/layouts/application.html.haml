@@ -8,4 +8,6 @@
   %body
     .menu
       = link_to 'Competitions', competitions_path
+    - flash.each do |key, value|
+      = value
     = yield
