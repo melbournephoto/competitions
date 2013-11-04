@@ -16,11 +16,13 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'capybara'
 gem 'awesome_print'
+gem 'unicorn'
 
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
+  gem 'foreman'
 end
 
 group :test do
@@ -34,6 +36,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'coveralls', require: false
   gem 'factory_girl_rails'
+  gem 'mailcatcher'
 end
 
 group :doc do
