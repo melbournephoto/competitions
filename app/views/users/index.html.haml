@@ -1,0 +1,8 @@
+%h1 Users
+
+%table
+  %tr
+    %th E-Mail
+  - @users.each do |user|
+    %tr
+      %td= link_to user.email, user

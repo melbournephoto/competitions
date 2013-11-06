@@ -1,0 +1,13 @@
+%h1 User
+
+%p
+  E-Mail:
+  = @user.email
+
+
+%h2 Grades
+
+%dl
+  - @user.competition_series_grades.each do |competition_series_grade|
+    %dt= competition_series_grade.competition_series.title
+    %dd= competition_series_grade.grade.title

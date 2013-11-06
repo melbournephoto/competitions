@@ -7,6 +7,8 @@ Competitions::Application.routes.draw do
     resources :email_judging_links
   end
 
+  resources :users
+
   resources :competition_series_grades
 
   namespace :judging do
