@@ -12,11 +12,15 @@ b_grade = Grade.find_or_create_by!(title: 'B Grade')
 user = User.find_or_create_by!(email: 'alan@alanharper.com.au', admin: 1) do |user|
   user.password = 'password'
   user.password_confirmation = 'password'
+  user.first_name = 'Alan'
+  user.last_name = 'Harper'
 end
 
 user = User.find_or_create_by!(email: 'ludovico@melbournephoto.org.au') do |user|
   user.password = 'password'
   user.password_confirmation = 'password'
+  user.first_name = 'Ludovico'
+  user.last_name = 'Hart'
 end
 
 competition_series = CompetitionSeries.find_or_create_by!(title: 'EDI 2014')

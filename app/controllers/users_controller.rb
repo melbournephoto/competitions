@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :require_admin
+  before_filter :require_admin, except: :sign_out
   def index
     @users = User.all
   end
