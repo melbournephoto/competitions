@@ -10,6 +10,8 @@
       - if signed_in?
         = link_to 'Competitions', competitions_path
         - if current_user.admin?
+          Admin:
+          = link_to 'Competitions', admin_competitions_path
           = link_to 'Users', admin_users_path
         = link_to 'Logout', destroy_user_session_path, method: :delete
     - flash.each do |key, value|

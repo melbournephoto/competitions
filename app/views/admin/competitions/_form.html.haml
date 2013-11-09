@@ -1,4 +1,4 @@
-= simple_form_for @competition do |f|
+= simple_form_for [:admin, @competition] do |f|
   = f.input :title
   = f.input :entries_open_at
   = f.input :entries_close_at

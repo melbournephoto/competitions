@@ -4,10 +4,13 @@ Competitions::Application.routes.draw do
   resources :competitions do
     resources :sections
     resources :entries
-    resources :email_judging_links
   end
 
   namespace :admin do
+    resources :competitions do
+      resources :sections
+      resources :email_judging_links
+    end
     resources :users
   end
 

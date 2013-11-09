@@ -6,5 +6,8 @@
     %th Entries Close At
   - @competitions.each do |competition|
     %tr
-      %td= link_to competition.title, competition
+      %td= link_to competition.title, admin_competition_path(competition)
       %td= competition.entries_close_at.to_formatted_s(:long)
+
+- if current_user.admin?
+  = link_to 'Create Competition', new_admin_competition_path

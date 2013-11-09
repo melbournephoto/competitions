@@ -1,6 +1,4 @@
-class SectionsController < ApplicationController
-  before_filter :require_admin
-
+class Admin::SectionsController < AdminController
   def new
     @section = competition.sections.new
   end
@@ -8,7 +6,7 @@ class SectionsController < ApplicationController
   def create
     @section = competition.sections.new(section_params)
     if @section.save
-      redirect_to competition
+      redirect_to admin_competition_path(competition)
     else
       render action: 'new'
     end
@@ -21,7 +19,7 @@ class SectionsController < ApplicationController
   def update
     @section = competition.sections.find(params[:id])
     if @section.update_attributes(section_params)
-      redirect_to competition
+      redirect_to admin_competition_path(competition)
     else
       render action: 'edit'
     end

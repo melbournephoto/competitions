@@ -2,24 +2,6 @@
   Competition:
   = @competition.title
 
-- if current_user.admin?
-  %h2 Sections
-  %table
-    %tr
-      %th Title
-      %th Entry Limit
-      %th Max Height (px)
-      %th Max Width (px)
-      %th Max File Size (mb)
-    - @competition.sections.each do |section|
-      %tr
-        %td= section.title
-        %td= section.entry_limit
-        %td= section.max_height
-        %td= section.max_width
-        %td= section.max_file_size
-        %td= link_to 'Edit', edit_competition_section_path(@competition, section) if current_user.admin?
-
 %h2 Your Entries
 - if @entries.empty?
   You have no entries
@@ -42,8 +24,3 @@
 
 - if @competition.open_for_entry?
   = link_to 'New Entry', new_competition_entry_path(@competition)
-
-- if current_user.admin?
-  = link_to 'Edit Competition', edit_competition_path(@competition)
-  = link_to 'Add Section', new_competition_section_path(@competition)
-  = link_to 'E-Mail Judging Link', new_competition_email_judging_link_path(@competition)

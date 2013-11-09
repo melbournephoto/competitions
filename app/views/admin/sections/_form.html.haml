@@ -1,4 +1,4 @@
-= simple_form_for [@competition, @section] do |f|
+= simple_form_for [:admin, @competition, @section] do |f|
   = f.input :title
   = f.input :entry_limit
   = f.input :max_height

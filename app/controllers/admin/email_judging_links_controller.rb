@@ -1,4 +1,4 @@
-class EmailJudgingLinksController < ApplicationController
+class Admin::EmailJudgingLinksController < AdminController
   before_filter :set_competition
 
   def new
