@@ -17,6 +17,7 @@ gem 'rmagick'
 gem 'capybara'
 gem 'awesome_print'
 gem 'unicorn'
+gem 'pry'
 
 group :development do
   gem 'better_errors'

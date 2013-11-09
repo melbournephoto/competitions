@@ -1,8 +1,14 @@
 %h1 User
 
-%p
-  E-Mail:
-  = @user.email
+%dd
+  %dl E-Mail
+  %dt= @user.email
+
+  %dl First Name
+  %dt= @user.first_name
+
+  %dl Last Name
+  %dt= @user.last_name
 
 
 %h2 Grades
