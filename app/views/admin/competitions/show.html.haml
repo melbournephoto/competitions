@@ -3,13 +3,14 @@
   = @competition.title
 
 %h2 Sections
-%table
+%table.table.table-striped
   %tr
     %th Title
     %th Entry Limit
     %th Max Height (px)
     %th Max Width (px)
     %th Max File Size (mb)
+    %th
   - @competition.sections.each do |section|
     %tr
       %td= section.title

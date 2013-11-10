@@ -6,12 +6,14 @@
 - if @entries.empty?
   You have no entries
 - else
-  %table.your_entries
+  %table.your_entries.table.table-striped
     %tr
       %th
         %th Title
         %th Theme
         %th Grade
+        %th
+        %th
     - @entries.each do |entry|
       %tr
         %td= image_tag entry.photo.thumb.url

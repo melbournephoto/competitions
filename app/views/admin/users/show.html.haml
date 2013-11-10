@@ -17,3 +17,19 @@
   - @user.competition_series_grades.each do |competition_series_grade|
     %dt= competition_series_grade.competition_series.title
     %dd= competition_series_grade.grade.title
+
+%h2 Entries
+%table.table.table-striped
+  %tr
+    %th
+    %th Title
+    %th Competition
+    %th Section
+    %th Grade
+  - @user.entries.each do |entry|
+    %tr
+      %td= image_tag entry.photo.thumb.url
+      %td= entry.title
+      %td= entry.competition.title
+      %td= entry.section.title
+      %td= entry.grade.title
