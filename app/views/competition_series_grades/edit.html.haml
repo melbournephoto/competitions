@@ -1,7 +1,7 @@
 %h1 Select your grade
 
 = simple_form_for @competition_series_grade do |f|
-  = f.input :grade_id, collection: Grade.all
+  = f.input :grade_id, collection: @competition_series.grades
   = f.hidden_field :competition_series_id
 
   = f.submit 'Save'

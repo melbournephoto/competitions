@@ -2,6 +2,7 @@
 
 FactoryGirl.define do
   factory :grade do
-  	title 'A Grade'
+    title 'A Grade'
+    competition_series
   end
 end

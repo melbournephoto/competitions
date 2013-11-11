@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(version: 20131017205900) do
   add_index "competition_series_grades", ["user_id"], name: "index_competition_series_grades_on_user_id", using: :btree
 
   create_table "competitions", force: true do |t|
-    t.integer  "competition_series_id"
     t.string   "title"
     t.datetime "entries_open_at"
     t.datetime "entries_close_at"
@@ -42,8 +41,6 @@ ActiveRecord::Schema.define(version: 20131017205900) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "competitions", ["competition_series_id"], name: "index_competitions_on_competition_series_id", using: :btree
 
   create_table "entries", force: true do |t|
     t.integer  "user_id"
@@ -64,10 +61,13 @@ ActiveRecord::Schema.define(version: 20131017205900) do
   add_index "entries", ["user_id"], name: "index_entries_on_user_id", using: :btree
 
   create_table "grades", force: true do |t|
+    t.integer  "competition_series_id"
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "grades", ["competition_series_id"], name: "index_grades_on_competition_series_id", using: :btree
 
   create_table "ratings", force: true do |t|
     t.string   "title"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20131017205900) do
   end
 
   create_table "sections", force: true do |t|
+    t.integer  "competition_series_id"
     t.integer  "competition_id"
     t.string   "title"
     t.integer  "entry_limit"
@@ -90,6 +91,7 @@ ActiveRecord::Schema.define(version: 20131017205900) do
   end
 
   add_index "sections", ["competition_id"], name: "index_sections_on_competition_id", using: :btree
+  add_index "sections", ["competition_series_id"], name: "index_sections_on_competition_series_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false

@@ -6,6 +6,5 @@ FactoryGirl.define do
     entries_open_at 1.month.ago
     entries_close_at 1.month.from_now
     results_published_at 2.months.from_now
-    association :competition_series, :factory => :competition_series
   end
 end

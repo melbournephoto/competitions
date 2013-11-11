@@ -6,8 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-a_grade = Grade.find_or_create_by!(title: 'A Grade')
-b_grade = Grade.find_or_create_by!(title: 'B Grade')
+edi_2014 = CompetitionSeries.find_or_create_by!(title: 'EDI 2014')
+set_subject_2014 = CompetitionSeries.find_or_create_by!(title: 'Set Subject 2014')
+a_grade = Grade.find_or_create_by!(title: 'A Grade', competition_series: edi_2014)
+b_grade = Grade.find_or_create_by!(title: 'B Grade', competition_series: edi_2014)
+set_subject = Grade.find_or_create_by!(title: 'Set Subject', competition_series: set_subject_2014)
 
 user = User.find_or_create_by!(email: 'alan@alanharper.com.au', admin: 1) do |user|
   user.password = 'password'
@@ -23,7 +26,6 @@ user = User.find_or_create_by!(email: 'ludovico@melbournephoto.org.au') do |user
   user.last_name = 'Hart'
 end
 
-competition_series = CompetitionSeries.find_or_create_by!(title: 'EDI 2014')
 
 competitions = {
     'Sunshine' => '2014-02-14',
@@ -43,7 +45,6 @@ competitions.each do |name, closing_date_string|
                                                entries_open_at: '2013-01-01',
                                                entries_close_at: closing_date,
                                                results_published_at: publish_date,
-                                               competition_series: competition_series
   )
 
   open_section = competition.sections.find_or_create_by(
@@ -51,7 +52,8 @@ competitions.each do |name, closing_date_string|
       entry_limit: 3,
       max_height: max_dimension,
       max_width: max_dimension,
-      max_file_size: max_size
+      max_file_size: max_size,
+      competition_series: edi_2014
   )
 
   theme_section = competition.sections.find_or_create_by(
@@ -59,7 +61,8 @@ competitions.each do |name, closing_date_string|
       entry_limit: 1,
       max_height: max_dimension,
       max_width: max_dimension,
-      max_file_size: max_size
+      max_file_size: max_size,
+      competition_series: set_subject_2014
   )
 
   Entry.find_or_create_by!(competition: competition, user: user, section: open_section, grade: b_grade) do |entry|

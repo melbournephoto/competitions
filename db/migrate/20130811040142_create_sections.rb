@@ -1,6 +1,7 @@
 class CreateSections < ActiveRecord::Migration
   def change
     create_table :sections do |t|
+      t.references :competition_series, index: true
       t.references :competition, index: true
       t.string :title
       t.integer :entry_limit

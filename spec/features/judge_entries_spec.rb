@@ -3,8 +3,9 @@ require 'spec_helper'
 describe "judge entries" do
   before do
     @competition = FactoryGirl.create :competition
+    @competition_series = FactoryGirl.create :competition_series
     @user = FactoryGirl.create :user
-    @section = Section.create!(title: 'Open', max_file_size: 1, entry_limit: 10, max_height: 1200, max_width: 1200)
+    @section = Section.create!(title: 'Open', max_file_size: 1, entry_limit: 10, max_height: 1200, max_width: 1200, competition: @competition, competition_series: @competition_series)
     Rating.create!(title: 'Commended')
     @photo = ActionDispatch::Http::UploadedFile.new(
         tempfile: File.new(Rails.root.join('spec/fixtures/red_umbrella.jpg')),

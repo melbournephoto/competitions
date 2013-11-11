@@ -39,9 +39,12 @@ class EntriesController < ApplicationController
   end
 
   def validate_user_grade
-    @comp_grade = CompetitionSeriesGrade.find_by(user: current_user, competition_series: competition.competition_series)
-    unless @comp_grade
-      redirect_to edit_competition_series_grade_path(competition.competition_series), notice: 'You must select your grade before continuing'
+    @competition.sections.each do |section|
+      @comp_grade = CompetitionSeriesGrade.find_by(user: current_user, competition_series: section.competition_series)
+      unless @comp_grade
+        redirect_to edit_competition_series_grade_path(section.competition_series), notice: 'You must select your grade before continuing'
+        return
+      end
     end
   end
 
