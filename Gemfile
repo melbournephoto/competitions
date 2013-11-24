@@ -18,6 +18,7 @@ gem 'capybara'
 gem 'awesome_print'
 gem 'unicorn'
 gem 'pry'
+gem 'rollbar'
 
 group :development do
   gem 'better_errors'
