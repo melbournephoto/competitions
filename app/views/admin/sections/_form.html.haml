@@ -1,8 +1,8 @@
 = simple_form_for [:admin, @competition, @section] do |f|
-  = f.input :title
+  = f.input :title, label: 'Section Title'
   = f.input :entry_limit
-  = f.input :max_height
-  = f.input :max_width
-  = f.input :max_file_size
+  = f.input :max_height, label: 'Max height (px)'
+  = f.input :max_width, label: 'Max width (px)'
+  = f.input :max_file_size, label: 'Max file size (mb)'
 
   = f.submit
