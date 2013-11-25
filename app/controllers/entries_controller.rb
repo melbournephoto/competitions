@@ -32,6 +32,12 @@ class EntriesController < ApplicationController
     end
   end
 
+  def destroy
+    @entry = current_user.entries.find(params[:id])
+    @entry.destroy
+    redirect_to @entry.competition, notice: 'Your entry has been deleted'
+  end
+
   private
   def validate_competition
     @competition = Competition.find(params[:competition_id])
