@@ -1,0 +1,10 @@
+= simple_form_for [:admin, @user] do |f|
+  = f.input :first_name
+  = f.input :last_name
+  = f.input :email
+
+  - @competition_series.each do |competition_series|
+    .form-group
+      .control-label= competition_series[:competition_series].title
+      .form-control= select_for_series(competition_series)
+  = f.submit
