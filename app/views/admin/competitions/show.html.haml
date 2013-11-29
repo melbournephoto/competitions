@@ -1,3 +1,7 @@
+= link_to 'Edit Competition', edit_admin_competition_path(@competition)
+= link_to 'Add Section', new_admin_competition_section_path(@competition)
+= link_to 'E-Mail Judging Link', new_admin_competition_email_judging_link_path(@competition)
+
 %h1
   Competition:
   = @competition.title
@@ -20,6 +24,16 @@
       %td= section.max_file_size
       %td= link_to 'Edit', edit_admin_competition_section_path(@competition, section)
 
-= link_to 'Edit Competition', edit_admin_competition_path(@competition)
-= link_to 'Add Section', new_admin_competition_section_path(@competition)
-= link_to 'E-Mail Judging Link', new_admin_competition_email_judging_link_path(@competition)
+%h2 Entries
+%table.table.table-striped
+  %tr
+    %th Photo
+    %th Entrant
+    %th Grade
+    %th Title
+  - @competition.entries.ordered.each do |entry|
+    %tr
+      %td= image_tag entry.photo.thumb.url
+      %td= link_to entry.user.name, admin_user_path(entry.user)
+      %td= entry.grade.title
+      %td= entry.title

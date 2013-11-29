@@ -32,6 +32,6 @@
     %tr
       %td= image_tag entry.photo.thumb.url
       %td= entry.title
-      %td= entry.competition.title
+      %td= link_to entry.competition.title, admin_competition_path(entry.competition)
       %td= entry.section.title
       %td= entry.grade.title

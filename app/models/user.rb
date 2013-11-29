@@ -12,4 +12,10 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true
 
   accepts_nested_attributes_for :competition_series_grades
+
+  scope :ordered, -> { order(:last_name, :first_name)}
+
+  def name
+    [first_name, last_name].join(' ')
+  end
 end
