@@ -12,6 +12,9 @@ class Entry < ActiveRecord::Base
   validates :grade_id, presence: true
   validate :file
 
+  before_create :set_order
+
+  scope :ordered, -> { order(:order) }
   scope :not_rated, -> { where(rating_id: nil) }
 
   def title
@@ -36,5 +39,9 @@ class Entry < ActiveRecord::Base
     if section_entry_count_for_user >= section.entry_limit
       errors.add(:section_id, "Maximum of #{section.entry_limit} #{"entry".pluralize(section.entry_limit)} permitted in section '#{section.title}'")
     end
+  end
+
+  def set_order
+    self.order = Random.new.rand(2147483647)
   end
 end

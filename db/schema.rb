@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20131017205900) do
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "order"
   end
 
   add_index "entries", ["competition_id"], name: "index_entries_on_competition_id", using: :btree

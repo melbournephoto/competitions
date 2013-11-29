@@ -9,6 +9,7 @@ class CreateEntries < ActiveRecord::Migration
       t.string :title
       t.string :photo
       t.text :notes
+      t.integer :order, index: true, null: false
 
       t.timestamps
     end
