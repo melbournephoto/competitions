@@ -48,7 +48,7 @@ class EntriesController < ApplicationController
     @competition.sections.each do |section|
       @comp_grade = CompetitionSeriesGrade.find_by(user: current_user, competition_series: section.competition_series)
       unless @comp_grade
-        redirect_to edit_competition_series_grade_path(section.competition_series), notice: 'You must select your grade before continuing'
+        redirect_to edit_competition_series_grade_path(section.competition_series, competition_id: @competition), notice: 'You must select your grade before continuing'
         return
       end
     end

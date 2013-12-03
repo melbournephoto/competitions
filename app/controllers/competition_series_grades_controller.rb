@@ -1,8 +1,14 @@
 class CompetitionSeriesGradesController < ApplicationController
   def create
+    @competition = Competition.find_by_id(params[:competition_id])
     @competition_series_grade = current_user.competition_series_grades.new(competition_series_grade_params)
+    @competition_series = @competition_series_grade.competition_series
     if @competition_series_grade.save
-      redirect_to root_path, notice: 'Your grade has been saved'
+      if @competition
+        redirect_to new_competition_entry_path(@competition)
+      else
+        redirect_to root_path, notice: 'Your grade has been saved'
+      end
     else
       render action: 'edit'
     end
@@ -11,6 +17,7 @@ class CompetitionSeriesGradesController < ApplicationController
   def edit
     @competition_series = CompetitionSeries.find(params[:id])
     @competition_series_grade = CompetitionSeriesGrade.find_or_initialize_by(user: current_user, competition_series: @competition_series)
+    @competition = Competition.find_by_id(params[:competition_id])
   end
 
   private
