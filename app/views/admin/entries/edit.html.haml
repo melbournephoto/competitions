@@ -1,0 +1,15 @@
+= simple_form_for [:admin, @entry] do |f|
+  Entrant:
+  = @entry.user.name
+  Competition:
+  = @entry.competition.title
+  Section:
+  = @entry.section.title
+
+  = f.input :title
+  = f.input :grade_id, collection: @entry.section.competition_series.grades, label: 'Grade'
+  = f.hidden_field :photo_cache
+  = image_tag @entry.photo.thumb.url
+  = f.input :photo, as: :file
+
+  = f.submit
