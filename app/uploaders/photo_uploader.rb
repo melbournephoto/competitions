@@ -10,7 +10,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   end
 
   version :thumb do
-    process resize_to_fill: [280, 280]
+    process resize_to_fit: [280, 280]
   end
 
   def extension_white_list

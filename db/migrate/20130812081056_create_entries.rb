@@ -10,6 +10,10 @@ class CreateEntries < ActiveRecord::Migration
       t.string :photo
       t.text :notes
       t.integer :order, index: true, null: false
+      t.integer :photo_file_size
+      t.integer :photo_width
+      t.integer :photo_height
+      t.text :exif
 
       t.timestamps
     end

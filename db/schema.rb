@@ -51,9 +51,13 @@ ActiveRecord::Schema.define(version: 20131017205900) do
     t.string   "title"
     t.string   "photo"
     t.text     "notes"
+    t.integer  "order",           null: false
+    t.integer  "photo_file_size"
+    t.integer  "photo_width"
+    t.integer  "photo_height"
+    t.text     "exif"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "order"
   end
 
   add_index "entries", ["competition_id"], name: "index_entries_on_competition_id", using: :btree
