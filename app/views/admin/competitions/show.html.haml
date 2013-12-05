@@ -10,6 +10,7 @@
 %table.table.table-striped
   %tr
     %th Title
+    %th Competition Series
     %th Entry Limit
     %th Max Height (px)
     %th Max Width (px)
@@ -18,6 +19,7 @@
   - @competition.sections.each do |section|
     %tr
       %td= section.title
+      %td= section.competition_series.title
       %td= section.entry_limit
       %td= section.max_height
       %td= section.max_width
