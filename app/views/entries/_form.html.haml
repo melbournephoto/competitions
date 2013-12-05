@@ -1,6 +1,9 @@
 = simple_form_for [@competition, @entry] do |f|
   = f.input :title
-  = f.input :section_id, collection: @competition.sections
+
+  - if @entry.new_record?
+    = f.input :section_id, collection: @competition.sections
+
 
   = f.hidden_field :photo_cache
   = image_tag @entry.photo.thumb.url
