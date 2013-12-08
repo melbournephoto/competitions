@@ -1,4 +1,8 @@
 class Admin::EntriesController < AdminController
+  def show
+    @entry = Entry.find(params[:id])
+  end
+  
   def edit
     @entry = Entry.find(params[:id])
   end

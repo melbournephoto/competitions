@@ -30,8 +30,8 @@
     %th Grade
   - @user.entries.each do |entry|
     %tr
-      %td= image_tag entry.photo.thumb.url
-      %td= entry.title
+      %td= link_to image_tag(entry.photo.thumb.url), admin_entry_path(entry)
+      %td= link_to entry.title, admin_entry_path(entry)
       %td= link_to entry.competition.title, admin_competition_path(entry.competition)
       %td= entry.section.title
       %td= entry.grade.title

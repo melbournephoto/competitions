@@ -1,0 +1,10 @@
+%h1= @entry.title
+= link_to @entry.user.name, admin_user_path(@entry.user)
+
+%dl
+  %dt Section
+  %dd= @entry.section.title
+  %dt Grade
+  %dd= @entry.grade.title
+
+= image_tag(@entry.photo)

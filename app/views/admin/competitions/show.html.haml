@@ -30,14 +30,14 @@
 %table.table.table-striped
   %tr
     %th Photo
+    %th Title
     %th Entrant
     %th Grade
-    %th Title
     %th
   - @competition.entries.ordered.each do |entry|
     %tr
-      %td= image_tag entry.photo.thumb.url
+      %td= link_to image_tag(entry.photo.thumb.url), admin_entry_path(entry)
+      %td= link_to entry.title, admin_entry_path(entry)
       %td= link_to entry.user.name, admin_user_path(entry.user)
       %td= entry.grade.title
-      %td= entry.title
       %td= link_to 'Edit', edit_admin_entry_path(entry)
