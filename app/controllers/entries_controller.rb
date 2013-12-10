@@ -11,7 +11,10 @@ class EntriesController < ApplicationController
   def create
     @entry = @competition.entries.new(entry_params)
     @entry.user = current_user
-    @entry.grade = CompetitionSeriesGrade.find_by(competition_series: @entry.section.competition_series, user: current_user).grade
+
+    if @entry.section
+      @entry.grade = CompetitionSeriesGrade.find_by(competition_series: @entry.section.competition_series, user: current_user).grade
+    end
 
     if @entry.save
       redirect_to @competition
