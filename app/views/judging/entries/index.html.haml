@@ -2,17 +2,32 @@
   Entries for
   = @competition.title
 
-%table
-  %tr
-    %th
-    %th Rating
-    %th Notes
-  - @entries.each do |entry|
-    %tr
-      %td= image_tag entry.photo.thumb.url
-      %td
-        - if entry.rating
-          = entry.rating.title
-      %td= entry.notes
+.Judging-ratingcounts
+  - @rating_counts.each do |rating|
+    %label
+      = check_box_tag 'check-' + rating[:rating_id], 1, true, 'data-check' => rating[:rating_id], class: 'Judging-check'
+      = "#{rating[:title]} (#{rating[:count]})"
 
-      %td= link_to 'Rate', edit_judging_entry_path(entry)
+.Judging-gradecounts
+  - @grade_counts.each do |grade|
+    %label
+      = check_box_tag 'check-' + grade[:grade_id], 1, true, 'data-check' => grade[:grade_id], class: 'Judging-check'
+      = "#{grade[:title]} (#{grade[:count]})"
+
+- @entries.each do |entry|
+  .Judging-grid{class: "rating-#{entry.rating_id.to_s} grade-#{entry.grade_id}"}
+    = link_to image_tag(entry.photo.thumb.url), edit_judging_entry_path(entry)
+    %br
+    Rating:
+    - if entry.rating
+      = entry.rating.title
+    - else
+      No rating
+    %br
+    = entry.section.title
+    %br
+    = entry.grade.title
+    %br
+    = entry.notes
+    %br
+    = link_to 'Rate', edit_judging_entry_path(entry)

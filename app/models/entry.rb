@@ -16,7 +16,7 @@ class Entry < ActiveRecord::Base
 
   before_create :set_order
 
-  scope :ordered, -> { order(:order) }
+  scope :ordered, -> { includes(:grade).order('grades.order', :order) }
   scope :not_rated, -> { where(rating_id: nil) }
 
   def title

@@ -19,7 +19,7 @@ describe "judge entries" do
     visit '/judging/sessions/' + @competition.judge_key
     click_link 'Rate'
     fill_in 'Notes', with: 'A generic comment'
-    select 'Commended', from: 'Rating'
+    choose 'Commended'
     click_button 'Save and back to Entries'
 
     expect(page).to have_content 'A generic comment'
@@ -33,11 +33,11 @@ describe "judge entries" do
     visit '/judging/sessions/' + @competition.judge_key
     click_link('Rate', match: :first)
     fill_in 'Notes', with: 'A generic comment'
-    select 'Commended', from: 'Rating'
+    choose 'Commended'
     click_button 'Save and next unrated'
 
     fill_in 'Notes', with: 'Second entry'
-    select 'Commended', from: 'Rating'
+    choose 'Commended'
     click_button 'Save and next unrated'
 
     expect(page).to have_content 'A generic comment'
@@ -50,7 +50,7 @@ describe "judge entries" do
     visit '/judging/sessions/' + @competition.judge_key
     click_link('Rate', match: :first)
     fill_in 'Notes', with: 'A generic comment'
-    select 'Commended', from: 'Rating'
+    choose 'Commended'
     click_button 'Save and next unrated'
     expect(page).to have_content 'Entries for'
   end

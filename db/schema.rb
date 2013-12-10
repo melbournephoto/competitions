@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20131017205900) do
   create_table "grades", force: true do |t|
     t.integer  "competition_series_id"
     t.string   "title"
+    t.integer  "order",                 default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -79,6 +80,7 @@ ActiveRecord::Schema.define(version: 20131017205900) do
     t.integer  "points",              default: 0, null: false
     t.integer  "max_per_grade",       default: 0, null: false
     t.integer  "max_per_competition", default: 0, null: false
+    t.integer  "order",               default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

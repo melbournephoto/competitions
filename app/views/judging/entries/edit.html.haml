@@ -1,8 +1,20 @@
-= image_tag @entry.photo.url
+.Judging-header
+  = link_to 'Entries', judging_entries_path
+  = @entry.grade.title
+  = @entry.section.title
 
-= simple_form_for [:judging, @entry] do |f|
-  = f.input :rating_id, collection: Rating.all
-  = f.input :notes, input_html: { cols: 80, rows: 5 }
+.Judging-form
+  = simple_form_for [:judging, @entry] do |f|
+    .Judging-rating
+      = f.input :rating_id, collection: Rating.all, class: "Input-medium", as: :radio_buttons
 
-  = f.submit 'Save and back to Entries'
-  = f.submit 'Save and next unrated', name: 'next_unrated'
+    .Judging-buttons
+      = f.submit 'Save and back to Entries'
+      %br
+      = f.submit 'Save and next unrated', name: 'next_unrated'
+
+    .Judging-notes
+      = f.input :notes, input_html: { cols: 80, rows: 5 }, label: '', placeholder: 'Notes for Entrant'
+
+.Judging-image
+  = image_tag @entry.photo.url, class: 'center'
