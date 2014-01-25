@@ -1,5 +1,5 @@
 class JudgingMailer < ActionMailer::Base
-  default from: "mcc-webmaster@melbournephoto.org.au"
+  default from: "mcc-edi-comp@melbournephoto.org.au"
 
   def links(recipient, competition)
     @competition = competition
