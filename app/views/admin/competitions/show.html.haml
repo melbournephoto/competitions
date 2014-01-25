@@ -33,6 +33,7 @@
     %th Title
     %th Entrant
     %th Grade
+    %th Rating
     %th
   - @competition.entries.ordered.each do |entry|
     %tr
@@ -40,4 +41,5 @@
       %td= link_to entry.title, admin_entry_path(entry)
       %td= link_to entry.user.name, admin_user_path(entry.user)
       %td= entry.grade.title
+      %td= entry.rating.try(:title) || 'No Rating'
       %td= link_to 'Edit', edit_admin_entry_path(entry)
