@@ -4,11 +4,15 @@ describe "enter a photo in a competition" do
   before do
     @user = FactoryGirl.create :user
     @competition = FactoryGirl.create :competition, title: 'EDI'
-    competition_series = FactoryGirl.create(:competition_series)
-    @section = @competition.sections.create!(title: 'Open', max_file_size: 1, max_width: 1200, max_height: 1200, entry_limit: 1,
-                                  competition_series: competition_series)
-    @a_grade = FactoryGirl.create :grade, title: 'A Grade', competition_series: competition_series
-    @b_grade = FactoryGirl.create :grade, title: 'B Grade', competition_series: competition_series
+    open_competition_series = FactoryGirl.create(:competition_series)
+    set_subject_competition_series = FactoryGirl.create(:competition_series, title: 'Set Subject')
+    @open_section = @competition.sections.create!(title: 'Open', max_file_size: 1, max_width: 1200, max_height: 1200, entry_limit: 1,
+                                  competition_series: open_competition_series)
+    @set_subject_section = @competition.sections.create!(title: 'Sunshine', max_file_size: 1, max_width: 1200, max_height: 1200, entry_limit: 1,
+                                             competition_series: set_subject_competition_series)
+    @a_grade = FactoryGirl.create :grade, title: 'A Grade', competition_series: open_competition_series
+    @b_grade = FactoryGirl.create :grade, title: 'B Grade', competition_series: open_competition_series
+    @set_subject_grade = FactoryGirl.create :grade, title: 'B Grade', competition_series: set_subject_competition_series
 
     visit '/'
 
@@ -39,8 +43,10 @@ describe "enter a photo in a competition" do
     expect(page).to have_content 'Red Umbrella'
   end
 
+
+
   it "tries to upload a photo without a section" do
-    CompetitionSeriesGrade.create!(user: @user, competition_series: @section.competition_series, grade: @b_grade)
+    CompetitionSeriesGrade.create!(user: @user, competition_series: @open_section.competition_series, grade: @b_grade)
 
     click_link 'Competitions'
     click_link 'EDI'
@@ -55,7 +61,7 @@ describe "enter a photo in a competition" do
   end
 
   it "tries to upload to a full section" do
-    CompetitionSeriesGrade.create!(user: @user, competition_series: @section.competition_series, grade: @b_grade)
+    CompetitionSeriesGrade.create!(user: @user, competition_series: @open_section.competition_series, grade: @b_grade)
 
     click_link 'Competitions'
     click_link 'EDI'
@@ -77,7 +83,7 @@ describe "enter a photo in a competition" do
   end
 
   it "edits an existing entry" do
-    CompetitionSeriesGrade.create!(user: @user, competition_series: @section.competition_series, grade: @b_grade)
+    CompetitionSeriesGrade.create!(user: @user, competition_series: @open_section.competition_series, grade: @b_grade)
 
     click_link 'Competitions'
     click_link 'EDI'

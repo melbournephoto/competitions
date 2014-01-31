@@ -16,8 +16,13 @@ class CompetitionSeriesGradesController < ApplicationController
 
   def edit
     @competition_series = CompetitionSeries.find(params[:id])
-    @competition_series_grade = CompetitionSeriesGrade.find_or_initialize_by(user: current_user, competition_series: @competition_series)
     @competition = Competition.find_by_id(params[:competition_id])
+    if @competition_series.grades.count == 1
+      CompetitionSeriesGrade.find_or_create_by!(user: current_user, competition_series: @competition_series, grade: @competition_series.grades.first)
+      redirect_to new_competition_entry_path(@competition)
+    else
+      @competition_series_grade = CompetitionSeriesGrade.find_or_initialize_by(user: current_user, competition_series: @competition_series)
+    end
   end
 
   private
