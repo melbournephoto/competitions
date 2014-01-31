@@ -16,3 +16,5 @@
 /tmp
 public/system/uploads
 coverage
+public/assets
+public/uploads
