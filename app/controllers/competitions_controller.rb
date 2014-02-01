@@ -1,6 +1,7 @@
 class CompetitionsController < ApplicationController
   def index
-    @competitions = Competition.all
+    @open_competitions = Competition.open
+    @enterred_competitions = Competition.entered_by(current_user)
   end
 
 

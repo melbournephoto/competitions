@@ -8,6 +8,11 @@ class Competition < ActiveRecord::Base
   has_many :sections, dependent: :destroy
   has_many :entries, dependent: :destroy
 
+  scope :ordered, -> { order('entries_close_at desc') }
+  scope :open, -> { ordered.where('entries_close_at > ?', Time.now) }
+  scope :closed, -> { where('entries_close_at < ?', Time.now) }
+  scope :entered_by, ->(user) { ordered.closed.joins(:entries).where('entries.user_id=?', user.id).group(:competition_id) }
+
   before_validation :set_judge_key
 
   def open_for_entry?

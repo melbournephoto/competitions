@@ -1,10 +1,19 @@
 %h1 Competitions
 
+%h2 Open for Entry
 %table.table.table-striped
   %tr
     %th Competition
     %th Entries Close At
-  - @competitions.each do |competition|
+  - @open_competitions.each do |competition|
     %tr
       %td= link_to competition.title, competition
       %td= competition.entries_close_at.to_formatted_s(:long)
+
+%h2 Your previous entries
+%table.table.table-striped
+  %tr
+    %th Competition
+  - @enterred_competitions.each do |competition|
+    %tr
+      %td= link_to competition.title, competition
