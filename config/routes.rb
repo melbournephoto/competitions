@@ -6,6 +6,8 @@ Competitions::Application.routes.draw do
     resources :entries
   end
 
+  resources :pages
+
   namespace :admin do
     resources :competitions do
       resources :sections
