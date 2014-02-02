@@ -31,7 +31,7 @@ class Judging::EntriesController < JudgingController
     @entry = current_competition.entries.find(params[:id])
     @entry.update_attributes(entry_params)
 
-    next_entry = current_competition.entries.not_rated.ordered.first
+    next_entry = current_competition.entries.not_rated.ordered.where(grade: @entry.grade).first
     if params.include?(:next_unrated) && next_entry
       redirect_to edit_judging_entry_path(next_entry)
     else
