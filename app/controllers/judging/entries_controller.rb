@@ -3,6 +3,12 @@ class Judging::EntriesController < JudgingController
     @competition = current_competition
     @entries = @competition.entries.ordered.includes(:rating)
 
+    @entries_by_grade = {}
+    @entries.each do |entry|
+      @entries_by_grade[entry.grade] = [] unless @entries_by_grade[entry.grade]
+      @entries_by_grade[entry.grade] << entry
+    end
+
     @rating_counts = []
     @entries.count(:group => "rating_id").each do |rating_id, count|
       rating_title = rating_id.nil? ? 'No Rating' : Rating.find(rating_id).title

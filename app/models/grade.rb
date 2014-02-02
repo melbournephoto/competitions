@@ -4,4 +4,6 @@ class Grade < ActiveRecord::Base
 
   validates :title, presence: true
   validates :competition_series_id, presence: true
+
+  scope :ordered, -> { order(:order) }
 end
