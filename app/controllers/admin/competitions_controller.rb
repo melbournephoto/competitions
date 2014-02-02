@@ -1,6 +1,6 @@
 class Admin::CompetitionsController < ApplicationController
   def index
-    @competitions = Competition.all
+    @competitions = Competition.all.ordered
   end
 
   def show
