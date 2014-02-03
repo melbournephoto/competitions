@@ -67,6 +67,11 @@ GEM
       thor
     daemons (1.1.9)
     debug_inspector (0.0.2)
+    delayed_job (4.0.0)
+      activesupport (>= 3.0, < 4.1)
+    delayed_job_active_record (4.0.0)
+      activerecord (>= 3.0, < 4.1)
+      delayed_job (>= 3.0, < 4.1)
     devise (3.2.2)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -280,6 +285,7 @@ DEPENDENCIES
   capybara
   carrierwave
   coveralls
+  delayed_job_active_record
   devise (~> 3.2.0)
   factory_girl_rails
   foreman
