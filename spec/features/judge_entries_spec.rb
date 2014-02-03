@@ -11,6 +11,7 @@ describe "judge entries" do
         tempfile: File.new(Rails.root.join('spec/fixtures/red_umbrella.jpg')),
         filename: File.basename(File.new(Rails.root.join('spec/fixtures/red_umbrella.jpg')))
     )
+    @grade = Grade.create!(title: 'A Grade', competition_series: @competition_series)
   end
 
   it "allows a judge to enter a rating and notes" do
@@ -27,8 +28,8 @@ describe "judge entries" do
   end
 
   it "allows a judge to save and go to the next unrated entry" do
-    @first_entry = FactoryGirl.create(:entry, competition: @competition, user: @user, section: @section, photo: @photo)
-    @second_entry = FactoryGirl.create(:entry, competition: @competition, user: @user, section: @section, photo: @photo)
+    @first_entry = FactoryGirl.create(:entry, competition: @competition, user: @user, section: @section, photo: @photo, grade: @grade)
+    @second_entry = FactoryGirl.create(:entry, competition: @competition, user: @user, section: @section, photo: @photo, grade: @grade)
 
     visit '/judging/sessions/' + @competition.judge_key
     click_link('Rate', match: :first)
