@@ -2,6 +2,8 @@
   Entries for
   = @competition.title
 
+%p= link_to 'Download all entries', new_judging_download_entries_path
+
 .Judging-ratingcounts
   - @rating_counts.each do |rating|
     %label
@@ -13,6 +15,9 @@
   - entries.each do |entry|
     .Judging-grid{class: "rating-#{entry.rating_id.to_s} grade-#{entry.grade_id}"}
       = link_to image_tag(entry.photo.thumb.url), edit_judging_entry_path(entry)
+      %br
+      Entry ID:
+      = entry.order
       %br
       Rating:
       - if entry.rating

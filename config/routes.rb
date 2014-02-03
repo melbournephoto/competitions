@@ -20,6 +20,7 @@ Competitions::Application.routes.draw do
   resources :competition_series_grades
 
   namespace :judging do
+    resource :download_entries
     resources :entries
     resources :sessions
   end

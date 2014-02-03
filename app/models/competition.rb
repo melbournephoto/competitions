@@ -1,3 +1,5 @@
+require 'zip'
+
 class Competition < ActiveRecord::Base
   validates :title, presence: true
   validates :entries_open_at, presence: true
@@ -25,4 +27,5 @@ class Competition < ActiveRecord::Base
 
     self.judge_key = SecureRandom.hex
   end
+
 end

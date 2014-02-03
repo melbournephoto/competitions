@@ -19,7 +19,7 @@ gem 'awesome_print'
 gem 'unicorn'
 gem 'pry'
 gem 'rollbar'
-gem 'delayed_job_active_record'
+gem 'rubyzip', '>= 1.0.0'
 
 group :development do
   gem 'better_errors'
