@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140203061737) do
+ActiveRecord::Schema.define(version: 20140204201634) do
 
   create_table "competition_series", force: true do |t|
     t.string   "title"
@@ -111,6 +111,7 @@ ActiveRecord::Schema.define(version: 20140203061737) do
     t.integer  "max_file_size"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "order",                 default: 0, null: false
   end
 
   add_index "sections", ["competition_id"], name: "index_sections_on_competition_id", using: :btree

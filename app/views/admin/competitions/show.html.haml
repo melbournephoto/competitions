@@ -15,8 +15,9 @@
     %th Max Height (px)
     %th Max Width (px)
     %th Max File Size (mb)
+    %th Order
     %th
-  - @competition.sections.each do |section|
+  - @competition.sections.ordered.each do |section|
     %tr
       %td= section.title
       %td= section.competition_series.title
@@ -24,6 +25,7 @@
       %td= section.max_height
       %td= section.max_width
       %td= section.max_file_size
+      %td= section.order
       %td= link_to 'Edit', edit_admin_competition_section_path(@competition, section)
 
 %h2 Entries

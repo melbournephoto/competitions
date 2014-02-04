@@ -1,6 +1,9 @@
 class Section < ActiveRecord::Base
   belongs_to :competition
   belongs_to :competition_series
+  has_many :entries
+
+  scope :ordered, -> { order(:order) }
 
   validates :competition_id, presence: true
   validates :competition_series_id, presence: true
