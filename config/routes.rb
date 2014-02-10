@@ -13,6 +13,7 @@ Competitions::Application.routes.draw do
       resources :sections
       resources :email_judging_links
     end
+    resources :download_competitions
     resources :entries
     resources :users
   end
