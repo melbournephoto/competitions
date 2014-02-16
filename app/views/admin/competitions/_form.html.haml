@@ -1,8 +1,8 @@
 = simple_form_for [:admin, @competition] do |f|
   = f.input :title
-  = f.input :entries_open_at
-  = f.input :entries_close_at
-  = f.input :results_published_at
+  = f.input :entries_open_at, as: :string
+  = f.input :entries_close_at, as: :string
+  = f.input :results_published_at, as: :string
   = f.input :notes
 
   = f.submit

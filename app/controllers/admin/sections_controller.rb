@@ -31,7 +31,7 @@ class Admin::SectionsController < AdminController
   end
 
   def section_params
-    params.require(:section).permit(:title, :entry_limit, :max_height, :max_width, :max_file_size, :order)
+    params.require(:section).permit(:title, :entry_limit, :max_height, :max_width, :max_file_size, :order, :competition_series_id)
   end
 
 end

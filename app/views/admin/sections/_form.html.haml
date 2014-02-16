@@ -5,5 +5,5 @@
   = f.input :max_width, label: 'Max width (px)'
   = f.input :max_file_size, label: 'Max file size (mb)'
   = f.input :order
-
+  = f.input :competition_series_id, collection: CompetitionSeries.all
   = f.submit
