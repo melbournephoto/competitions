@@ -1,0 +1,7 @@
+%h1= @competition_series.title
+
+%table.table.table-striped
+  - @competition_series.sections.each do |section|
+    %tr
+      %td= link_to section.competition.title, admin_competition_path(section.competition)
+      %td= section.title

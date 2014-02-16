@@ -9,6 +9,7 @@ Competitions::Application.routes.draw do
   resources :pages
 
   namespace :admin do
+    resources :competition_series
     resources :competitions do
       resources :sections
       resources :email_judging_links
