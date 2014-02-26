@@ -10,7 +10,7 @@ class Admin::EntriesController < AdminController
   def update
     @entry = Entry.find(params[:id])
     if @entry.update_attributes(entry_params)
-      redirect_to admin_competition_path(@entry.competition), notice: 'The entry has been updated'
+      redirect_to admin_entry_path(@entry), notice: 'The entry has been updated'
     else
       render action: 'edit'
     end
