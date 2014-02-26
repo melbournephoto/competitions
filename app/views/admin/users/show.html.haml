@@ -35,3 +35,4 @@
       %td= link_to entry.competition.title, admin_competition_path(entry.competition)
       %td= entry.section.title
       %td= entry.grade.title
+      %td= entry.rating.try(:title)
