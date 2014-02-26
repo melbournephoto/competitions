@@ -30,10 +30,10 @@ class Slide
       @base.composite!(overlay, Magick::CenterGravity, 0, 0, Magick::OverCompositeOp)
     end
 
-    file = Tempfile.new(rand.to_s.split('.').last + '.jpg')
-    @base.write('jpeg:' + file.path)
+    file = '/tmp/' + rand.to_s.split('.').last + '.jpg'
+    @base.write('jpeg:' + file)
 
-    file.path
+    file
   end
 
   private
