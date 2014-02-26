@@ -1,7 +1,11 @@
 %h1= @entry.title
 = link_to @entry.user.name, admin_user_path(@entry.user)
 
+= link_to '[Edit Entry]', edit_admin_entry_path(@entry)
+
 %dl
+  %dt Competition
+  %dd= link_to @entry.competition.title, admin_competition_path(@entry.competition)
   %dt Section
   %dd= @entry.section.title
   %dt Grade
