@@ -31,6 +31,14 @@ class Entry < ActiveRecord::Base
     entries.count
   end
 
+  def points
+    rating.try(:points) || 1
+  end
+
+  def short_rating
+    rating.try(:short) || 'e'
+  end
+
   private
   def file
     return if section.nil? || photo.nil?

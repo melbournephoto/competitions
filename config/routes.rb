@@ -8,6 +8,8 @@ Competitions::Application.routes.draw do
 
   resources :pages
 
+  resources :scores
+
   namespace :admin do
     resources :competition_series
     resources :competitions do

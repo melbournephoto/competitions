@@ -1,0 +1,18 @@
+%h1
+  = @grade.competition_series.title
+  = @grade.title
+
+%table.table.table-striped
+  %tr
+    %th Name
+    - @grade.competition_series.sections.each do |section|
+      %th= section.competition.title
+    %th Total
+  - @scores.results.each do |result|
+    %tr
+      %td= result[:user].name
+      - @grade.competition_series.sections.each do |section|
+        %td
+          - if result[:competitions][section.competition_id].present?
+            = result[:competitions][section.competition_id].map{|e| e.short_rating}.join
+      %td= result[:total]

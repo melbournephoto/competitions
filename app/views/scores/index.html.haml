@@ -1,0 +1,7 @@
+%ul
+  - CompetitionSeries.all.each do |competition_series|
+    %li
+      = competition_series.title
+      %br
+      - competition_series.grades.each do |grade|
+        = link_to grade.title, score_path(grade)
