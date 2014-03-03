@@ -18,6 +18,7 @@ class Entry < ActiveRecord::Base
 
   scope :ordered, -> { includes(:grade).order('grades.order', :order) }
   scope :not_rated, -> { where(rating_id: nil) }
+  scope :extant, -> { where(deleted_at: nil) }
 
   def title
     read_attribute(:title).blank? ? 'Untitled' : read_attribute(:title)

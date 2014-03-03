@@ -16,6 +16,12 @@ class Admin::EntriesController < AdminController
     end
   end
 
+  def destroy
+    @entry = Entry.find(params[:id])
+    @entry.update_attribute :deleted_at, Time.now
+    redirect_to admin_entry_path(@entry)
+  end
+
   private
   def entry_params
     params.require(:entry).permit(:title, :entry_section_id, :photo_cache, :photo, :grade_id)

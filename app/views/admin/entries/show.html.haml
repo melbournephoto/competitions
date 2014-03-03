@@ -1,7 +1,12 @@
+- if @entry.deleted_at.present?
+  %h1 THIS ENTRY HAS BEEN DELETED
+
 %h1= @entry.title
 = link_to @entry.user.name, admin_user_path(@entry.user)
 
-= link_to '[Edit Entry]', edit_admin_entry_path(@entry)
+- unless @entry.deleted_at.present?
+  = link_to '[Edit Entry]', edit_admin_entry_path(@entry)
+  = link_to '[Delete Entry]', admin_entry_path(@entry), method: :delete, data: {confirm: 'Are you sure?'}
 
 %dl
   %dt Competition

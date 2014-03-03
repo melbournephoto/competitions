@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140303102750) do
+ActiveRecord::Schema.define(version: 20140303105508) do
 
   create_table "competition_series", force: true do |t|
     t.string   "title"
@@ -74,9 +74,11 @@ ActiveRecord::Schema.define(version: 20140303102750) do
     t.text     "exif"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
   add_index "entries", ["competition_id"], name: "index_entries_on_competition_id", using: :btree
+  add_index "entries", ["deleted_at"], name: "index_entries_on_deleted_at", using: :btree
   add_index "entries", ["grade_id"], name: "index_entries_on_grade_id", using: :btree
   add_index "entries", ["section_id"], name: "index_entries_on_section_id", using: :btree
   add_index "entries", ["user_id"], name: "index_entries_on_user_id", using: :btree

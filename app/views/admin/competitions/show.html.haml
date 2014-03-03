@@ -38,7 +38,7 @@
     %th Grade
     %th Rating
     %th
-  - @competition.entries.ordered.each do |entry|
+  - @competition.entries.extant.ordered.each do |entry|
     %tr
       %td= link_to image_tag(entry.photo.thumb.url), admin_entry_path(entry)
       %td= link_to entry.title, admin_entry_path(entry)

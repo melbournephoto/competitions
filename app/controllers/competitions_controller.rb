@@ -7,6 +7,6 @@ class CompetitionsController < ApplicationController
 
   def show
     @competition = Competition.find(params[:id])
-    @entries = Entry.where(competition: @competition, user: current_user)
+    @entries = Entry.extant.where(competition: @competition, user: current_user)
   end
 end

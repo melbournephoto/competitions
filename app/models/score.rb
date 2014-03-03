@@ -5,7 +5,7 @@ class Score
 
   def results
     @results = {}
-    @grade.entries.joins(:competition).where('results_published_at < now()').each do |entry|
+    @grade.entries.extant.joins(:competition).where('results_published_at < now()').each do |entry|
       @results[entry.user_id] = {user: entry.user, total: 0, competitions: {}} unless @results[entry.user_id]
 
       @results[entry.user_id][:competitions][entry.competition_id] = [] unless @results[entry.user_id][:competitions][entry.competition_id]
