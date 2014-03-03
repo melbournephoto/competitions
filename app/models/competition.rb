@@ -21,6 +21,10 @@ class Competition < ActiveRecord::Base
     entries_open_at < Time.now && entries_close_at > Time.now
   end
 
+  def results_published?
+    results_published_at < Time.now
+  end
+
   private
   def set_judge_key
     return unless self.judge_key.blank?
