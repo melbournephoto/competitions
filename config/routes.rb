@@ -28,5 +28,5 @@ Competitions::Application.routes.draw do
     resources :entries
     resources :sessions
   end
-  root to: 'competitions#index'
+  root to: 'root#index'
 end

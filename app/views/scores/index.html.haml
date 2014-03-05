@@ -1,5 +1,7 @@
+%h1 Results
+
 %ul
-  - CompetitionSeries.all.each do |competition_series|
+  - @competition_series.each do |competition_series|
     %li
       = competition_series.title
       %br

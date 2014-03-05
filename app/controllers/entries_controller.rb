@@ -1,4 +1,5 @@
 class EntriesController < ApplicationController
+  before_filter :authenticate_user!
   before_filter :validate_competition
   before_filter :validate_user_grade
 

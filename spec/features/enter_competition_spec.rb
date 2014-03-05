@@ -15,6 +15,7 @@ describe "enter a photo in a competition" do
     @set_subject_grade = FactoryGirl.create :grade, title: 'B Grade', competition_series: set_subject_competition_series
 
     visit '/'
+    click_link 'Login'
 
     fill_in 'Email', with: @user.email
     fill_in 'Password', with: @user.password

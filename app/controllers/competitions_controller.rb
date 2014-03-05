@@ -1,4 +1,6 @@
 class CompetitionsController < ApplicationController
+  before_filter :authenticate_user!
+
   def index
     @open_competitions = Competition.open
     @enterred_competitions = Competition.entered_by(current_user)

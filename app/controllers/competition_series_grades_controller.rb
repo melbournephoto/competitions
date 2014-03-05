@@ -1,4 +1,6 @@
 class CompetitionSeriesGradesController < ApplicationController
+  before_filter :authenticate_user!
+
   def create
     @competition = Competition.find_by_id(params[:competition_id])
     @competition_series_grade = current_user.competition_series_grades.new(competition_series_grade_params)

@@ -1,0 +1,10 @@
+%h1 Melbourne Camera Club Competitions
+
+%h2 Results
+
+- @competition_series.each do |competition_series|
+  = competition_series.title
+  - competition_series.grades.each do |grade|
+    = link_to grade.title, score_path(grade)
+  %br
+= link_to 'Full Results', scores_path
