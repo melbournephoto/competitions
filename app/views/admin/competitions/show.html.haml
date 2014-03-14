@@ -17,6 +17,7 @@
     %th Max Width (px)
     %th Max File Size (mb)
     %th Order
+    %th Entry Count
     %th
   - @competition.sections.ordered.each do |section|
     %tr
@@ -27,6 +28,7 @@
       %td= section.max_width
       %td= section.max_file_size
       %td= section.order
+      %td= section.entries.count
       %td= link_to 'Edit', edit_admin_competition_section_path(@competition, section)
 
 %h2 Entries
