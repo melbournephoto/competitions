@@ -32,6 +32,9 @@
       %td= link_to 'Edit', edit_admin_competition_section_path(@competition, section)
 
 %h2 Entries
+= label_tag 'awarded', 'Show awarded entries only?'
+= check_box_tag 'awarded'
+
 %table.table.table-striped
   %tr
     %th Photo
@@ -41,7 +44,7 @@
     %th Rating
     %th
   - @competition.entries.extant.ordered.each do |entry|
-    %tr
+    %tr{class: entry_class(entry)}
       %td= link_to image_tag(entry.photo.thumb.url), admin_entry_path(entry)
       %td= link_to entry.title, admin_entry_path(entry)
       %td= link_to entry.user.name, admin_user_path(entry.user)
