@@ -28,7 +28,7 @@ class Admin::DownloadCompetitionsController < AdminController
 
       #entry photos + award slides
       @competition.entries.each do |entry|
-        zipfile.add(entry.section.order.to_s + entry.grade.order.to_s + '00-' + entry.order.to_s + '.jpg', entry.photo.path)
+        zipfile.add(entry.section.order.to_s + entry.grade.order.to_s + '00-' + sprintf("%.10d", entry.order) + '.jpg', entry.photo.path)
         if entry.rating && entry.rating.points > 1
 
           title = entry.rating.title
@@ -45,7 +45,7 @@ class Admin::DownloadCompetitionsController < AdminController
             sort_section = '9'
           end
           sort_grade = entry.grade.order.to_s
-          zipfile.add(sort_section + sort_grade + '1' + entry.rating.points.to_s + '-' + entry.order.to_s + '.jpg', slide_path)
+          zipfile.add(sort_section + sort_grade + '1' + entry.rating.points.to_s + '-' + sprintf("%.10d", entry.order) + '.jpg', slide_path)
         end
       end
     end
