@@ -1,0 +1,44 @@
+jQuery(document).ready(function () {
+  var carousel = jQuery('#carousel');
+  carousel.css({height: '300px', overflow: 'hidden', 'white-space': 'nowrap'});
+  window.carouselOffset = 0;
+  window.carouselScrollingEnabled = true;
+
+  jQuery.get("http://<%= ENV['WEB_HOSTNAME'] %>/awarded_entries.json", function (data) {
+    var html = '<div id="#carouselInner>"';
+    window.entries = data.entries;
+    window.carouselIndex = data.entries.length - 1;
+
+    for (var i = 0; i < window.entries.length; i++) {
+      var entry = window.entries[i];
+      html = html + "<a target='_blank' href='" + entry.url + "'><img src='" + entry.carousel + "'/></a>"
+    }
+    var html = html + '</div>';
+
+    carousel.html(html);
+    carousel.bind('mouseover', function () {
+      window.carouselScrollingEnabled = false;
+    });
+    carousel.bind('mouseleave', function () {
+      window.carouselScrollingEnabled = true;
+    });
+    jQuery('#carouselInner').css({overflow: 'scroll', width: '100000px'});
+
+    setInterval(carouselSlideNext, 3000);
+  });
+  function carouselSlideNext() {
+    if (!window.carouselScrollingEnabled) {
+      return;
+    }
+    window.carouselIndex++;
+
+    if (window.carouselIndex >= (window.entries.length - 1)) {
+      window.carouselIndex = 0;
+      window.carouselOffset = 0;
+    }
+
+    var image = jQuery('#carousel img')[window.carouselIndex];
+    window.carouselOffset = window.carouselOffset + image.width
+    jQuery('#carousel').animate({scrollLeft: window.carouselOffset});
+  }
+});

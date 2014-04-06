@@ -19,6 +19,7 @@ class Entry < ActiveRecord::Base
   scope :ordered, -> { includes(:grade).order('grades.order', :order) }
   scope :not_rated, -> { where(rating_id: nil) }
   scope :extant, -> { where(deleted_at: nil) }
+  scope :awarded, -> { joins(:rating).where('points > 1')}
 
   def title
     read_attribute(:title).blank? ? 'Untitled' : read_attribute(:title)
@@ -38,6 +39,10 @@ class Entry < ActiveRecord::Base
 
   def short_rating
     rating.try(:short) || 'e'
+  end
+
+  def rating_title
+    rating.try(:title) || 'Entry'
   end
 
   private

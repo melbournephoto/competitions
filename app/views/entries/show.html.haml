@@ -1,0 +1,12 @@
+%h1= @entry.title
+%dl
+  %dt Photographer
+  %dd= link_to @entry.user.name, user_path(@entry.user)
+  %dt Grade
+  %dd= link_to @entry.grade.title, score_path(@entry.grade)
+  %dt Section
+  %dd= @entry.section.title
+  %dt Rating
+  %dd= @entry.rating_title
+
+= image_tag @entry.photo.public.url

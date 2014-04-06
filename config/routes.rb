@@ -1,14 +1,20 @@
 Competitions::Application.routes.draw do
   devise_for :users
 
+  resources :awarded_entries
+
   resources :competitions do
     resources :sections
     resources :entries
   end
 
+  resources :entries
+
   resources :pages
 
   resources :scores
+
+  resources :users
 
   namespace :admin do
     resources :competition_series

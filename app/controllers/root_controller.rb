@@ -4,5 +4,9 @@ class RootController < ApplicationController
 inner join sections on competition_series.id=sections.competition_series_id
 inner join competitions on sections.competition_id=competitions.id
 where results_published_at between ? and ?', Time.now.beginning_of_year, Time.now.end_of_year])
+
+    @open_competitions = Competition.open
+    @enterred_competitions = Competition.entered_by(current_user) if signed_in?
+
   end
 end

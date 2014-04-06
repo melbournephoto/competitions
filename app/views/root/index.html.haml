@@ -7,4 +7,22 @@
   - competition_series.grades.each do |grade|
     = link_to grade.title, score_path(grade)
   %br
-= link_to 'Full Results', scores_path
+
+%h2 Open for Entry
+%table.table.table-striped
+  %tr
+    %th Competition
+    %th Entries Close At
+  - @open_competitions.each do |competition|
+    %tr
+      %td= link_to competition.title, competition
+      %td= competition.entries_close_at.to_formatted_s(:long)
+
+- if @enterred_competitions
+  %h2 Your previous entries
+  %table.table.table-striped
+    %tr
+      %th Competition
+    - @enterred_competitions.each do |competition|
+      %tr
+        %td= link_to competition.title, competition

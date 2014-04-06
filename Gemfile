@@ -19,6 +19,7 @@ gem 'unicorn'
 gem 'pry'
 gem 'rollbar'
 gem 'rubyzip', '>= 1.0.0'
+gem 'jbuilder'
 
 group :development do
   gem 'better_errors'

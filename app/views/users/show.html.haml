@@ -1,0 +1,9 @@
+%h1= @user.name
+
+%h2 Awarded Images
+
+- @user.entries.awarded.each do |entry|
+  %div[entry](style='display: inline-block')
+    = link_to image_tag(entry.photo.thumb.url, class: 'img-rounded'), entry_path(entry)
+    %br
+    = entry.title

@@ -1,9 +1,17 @@
 class EntriesController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter :validate_competition
-  before_filter :validate_user_grade
+  before_filter :authenticate_user!, except: :show
+  before_filter :validate_competition, except: :show
+  before_filter :validate_user_grade, except: :show
 
   attr_reader :competition
+
+  def show
+    @entry = Entry.find(params[:id])
+    if !@entry.competition.results_published? || @entry.points < 2
+      render :text => 'Image not available', status: 404
+      return
+    end
+  end
 
   def new
     @entry = @competition.entries.new(user: current_user)

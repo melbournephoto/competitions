@@ -10,9 +10,14 @@
     %th Total
   - @scores.results.each do |result|
     %tr
-      %td= result[:user].name
+      %td
+        = link_to result[:user].name, user_path(result[:user])
       - @grade.competition_series.sections.each do |section|
         %td
           - if result[:competitions][section.competition_id].present?
-            = result[:competitions][section.competition_id].map{|e| e.short_rating}.join
+            - result[:competitions][section.competition_id].each do |entry|
+              - if entry.points > 1
+                = link_to entry.short_rating, entry_path(entry)
+              - else
+                = entry.short_rating
       %td= result[:total]
