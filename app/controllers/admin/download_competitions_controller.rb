@@ -9,7 +9,7 @@ class Admin::DownloadCompetitionsController < AdminController
     @slide = Slide.new()
     Zip::File.open(path, Zip::File::CREATE) do |zipfile|
       #title slide
-      zipfile.add('000-title.jpg', @slide.generate(
+      zipfile.add('0000-title.jpg', @slide.generate(
           upper_text: ['The Melbourne Camera Club'],
           lower_text: [@competition.title],
           image_path: Rails.root.join('app/assets/images/logo.png')))
@@ -22,7 +22,8 @@ class Admin::DownloadCompetitionsController < AdminController
               lower_text: [section.title + ' - ' + grade.title],
               image_path: Rails.root.join('app/assets/images/logo.png')
           )
-          zipfile.add(section.order.to_s + grade.order.to_s + '00-0grade-header.jpg', slide_path)
+          zipfile.add(section.order.to_s + grade.order.to_s + '00-0000000000.jpg', slide_path)
+          zipfile.add(section.order.to_s + grade.order.to_s + '00-9999999999.jpg', slide_path)
         end
       end
 
