@@ -4,3 +4,5 @@
   - @competition_series.each do |competition_series|
     %tr
       %td= link_to competition_series.title, admin_competition_series_path(competition_series)
+
+= link_to 'Create Competition Series', new_admin_competition_series_path

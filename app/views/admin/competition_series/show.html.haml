@@ -1,7 +1,15 @@
 %h1= @competition_series.title
 
+%h2 Sections
 %table.table.table-striped
   - @competition_series.sections.each do |section|
     %tr
       %td= link_to section.competition.title, admin_competition_path(section.competition)
       %td= section.title
+
+%h2 Grades
+%ul
+  - @competition_series.grades.each do |grade|
+    %li= grade.title
+
+= link_to 'Create Grade', new_admin_competition_series_grade_path(@competition_series)

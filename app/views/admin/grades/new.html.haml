@@ -1,0 +1,8 @@
+%h1
+  = @competition_series.title
+  Grades
+
+= simple_form_for [:admin, @competition_series, @grade] do |f|
+  = f.input :title
+
+  = f.submit :save

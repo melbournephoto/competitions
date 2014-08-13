@@ -17,7 +17,9 @@ Competitions::Application.routes.draw do
   resources :users
 
   namespace :admin do
-    resources :competition_series
+    resources :competition_series do
+      resources :grades
+    end
     resources :competitions do
       resources :sections
       resources :email_judging_links
