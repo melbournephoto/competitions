@@ -25,6 +25,12 @@ class EntriesController < ApplicationController
       @entry.grade = CompetitionSeriesGrade.find_by(competition_series: @entry.section.competition_series, user: current_user).grade
     end
 
+    if @entry.competition.entry_limit > 0 && @competition.entries.where(user: current_user).count >= @entry.competition.entry_limit
+      @entry.errors.add(:section_id, 'Competition entry limit reached')
+      render action: 'new'
+      return
+    end
+
     if @entry.save
       redirect_to @competition
     else

@@ -6,7 +6,7 @@ class Competition < ActiveRecord::Base
   validates :entries_close_at, presence: true
   validates :results_published_at, presence: true
   validates :judge_key, presence: true, uniqueness: true
-
+  validates :entry_limit, numericality: { greater_than_or_equal_to: 0 }
   has_many :sections, dependent: :destroy
   has_many :entries, dependent: :destroy
 

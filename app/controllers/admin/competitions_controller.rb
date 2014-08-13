@@ -35,6 +35,6 @@ class Admin::CompetitionsController < ApplicationController
 
   private
   def competition_params
-    params.require(:competition).permit(:title, :entries_open_at, :entries_close_at, :results_published_at, :notes)
+    params.require(:competition).permit(:title, :entries_open_at, :entries_close_at, :results_published_at, :notes, :entry_limit)
   end
 end
