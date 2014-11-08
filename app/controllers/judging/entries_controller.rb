@@ -10,7 +10,7 @@ class Judging::EntriesController < JudgingController
     end
 
     @rating_counts = []
-    @entries.count(:group => "rating_id").each do |rating_id, count|
+    @entries.group(:rating_id).count.each do |rating_id, count|
       rating_title = rating_id.nil? ? 'No Rating' : Rating.find(rating_id).title
       @rating_counts << {
           title: rating_title,
@@ -20,7 +20,7 @@ class Judging::EntriesController < JudgingController
     end
 
     @grade_counts = []
-    @entries.count(:group => "grade_id").each do |grade_id, count|
+    @entries.group(:grade_id).count.each do |grade_id, count|
       @grade_counts << {
           title: Grade.find(grade_id).title,
           grade_id: 'grade-' + grade_id.to_s,
