@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Competition do
+describe Competition, :type => :model do
   it "creates a valid model" do
     expect(-> { FactoryGirl.create(:competition) }).not_to raise_error
   end
@@ -14,19 +14,19 @@ describe Competition do
 
     describe "isn't open for entry before entries_open_at" do
       let(:entries_open_at) { 1.month.from_now }
-      it { should_not be_open_for_entry }
+      it { is_expected.not_to be_open_for_entry }
     end
 
     describe "is open between entries openning and closing" do
       let(:entries_open_at) { 1.month.ago }
       let(:entires_close_at) { 1.month.from_now }
-      it { should be_open_for_entry }
+      it { is_expected.to be_open_for_entry }
     end
 
     describe "is closed once entries have closed" do
       let(:entires_open_at) { 2.months.ago }
       let(:entries_close_at) { 1.month.ago }
-      it { should_not be_open_for_entry }
+      it { is_expected.not_to be_open_for_entry }
     end
   end
 

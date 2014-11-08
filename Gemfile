@@ -33,7 +33,7 @@ group :test do
 end
 
 group :development, :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 3.1.0'
   gem 'launchy'
   gem 'coveralls', require: false
   gem 'factory_girl_rails'

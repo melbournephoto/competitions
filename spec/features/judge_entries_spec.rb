@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "judge entries" do
+describe "judge entries", :type => :feature do
   before do
     @competition = FactoryGirl.create :competition
     @competition_series = FactoryGirl.create :competition_series

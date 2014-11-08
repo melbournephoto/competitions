@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "entry" do
+describe "entry", :type => :feature do
   describe "enter a photo in a regular competition" do
     before do
       @user = FactoryGirl.create :user

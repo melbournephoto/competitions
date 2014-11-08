@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "enter a photo in a competition" do
+describe "enter a photo in a competition", :type => :feature do
   it "sends a valid judging link" do
     user = FactoryGirl.create :user, :admin, email: 'admin@melbournephoto.org.au', password: 'password', password_confirmation: 'password'
     competition = FactoryGirl.create :competition, title: 'Febuary'

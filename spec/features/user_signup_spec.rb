@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "user signup" do
+describe "user signup", :type => :feature do
   it "allows a successful signup" do
     visit '/'
     click_link 'Sign up'

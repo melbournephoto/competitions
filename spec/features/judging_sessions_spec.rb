@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "login to judging" do
+describe "login to judging", :type => :feature do
   before do
     @competition = FactoryGirl.create :competition, title: 'EDI'
   end
