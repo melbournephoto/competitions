@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.3'
+gem 'rails', '4.0.11'
 gem 'mysql2'
 
 gem 'sass-rails', '~> 4.0.0'
@@ -35,8 +35,6 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'launchy'
-  gem 'guard'
-  gem 'guard-rspec'
   gem 'coveralls', require: false
   gem 'factory_girl_rails'
   gem 'mailcatcher'
