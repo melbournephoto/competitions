@@ -24,6 +24,6 @@ class Admin::EntriesController < AdminController
 
   private
   def entry_params
-    params.require(:entry).permit(:title, :entry_section_id, :photo_cache, :photo, :grade_id)
+    params.require(:entry).permit(:title, :entry_section_id, :photo_cache, :photo, :grade_id, :rating_id)
   end
 end
