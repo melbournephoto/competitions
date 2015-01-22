@@ -30,6 +30,7 @@ end
 
 group :test do
   gem 'timecop'
+  gem 'database_cleaner'
 end
 
 group :development, :test do

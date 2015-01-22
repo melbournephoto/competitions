@@ -1,0 +1,31 @@
+#!/bin/bash
+
+set -e
+set -x
+
+trap onexit EXIT
+
+function onexit {
+  docker rm -f mysql_competitions  > /dev/null || true
+}
+
+SHA1=`git rev-parse --short HEAD | tr -d "\n"`
+
+echo "--- Starting database"
+docker rm -f mysql_competitions || true #make sure the container doesn't exist to start with
+docker run -d -i -t -e MYSQL_ROOT_PASSWORD=mysecretpassword --name mysql_competitions mysql:5.5
+
+echo "--- Building container"
+docker build -t melbournephoto/competitions .
+
+echo "--- Running tests"
+docker run --rm -i -t --link=mysql_competitions:mysql melbournephoto/competitions bin/docker_tests
+
+if [ ! -z "$PUBLISH" -a "$BUILDKITE_BRANCH" == "master" ]; then
+  echo "--- Publishing container"
+  docker push melbournephoto/competitions
+fi
+
+# make sure cleanup is ran
+echo "--- Cleanup"
+onexit
