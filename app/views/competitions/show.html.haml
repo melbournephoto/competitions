@@ -21,6 +21,7 @@
           %th
         - if @competition.results_published?
           %th Rating
+          %th Judge's Comments
     - @entries.each do |entry|
       %tr
         %td= image_tag entry.photo.thumb.url
@@ -32,3 +33,4 @@
           %td= link_to 'Delete Entry', competition_entry_path(@competition, entry), method: :delete, confirmation: "Are you sure you wish to delete this entry?"
         - if @competition.results_published?
           %td= entry.rating.try(:title) || 'Entry'
+          %td= entry.notes
