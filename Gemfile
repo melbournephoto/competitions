@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.11'
+gem 'rails', '4.1.9'
 gem 'mysql2'
 
 gem 'sass-rails', '~> 4.0.0'
@@ -38,9 +38,4 @@ group :development, :test do
   gem 'coveralls', require: false
   gem 'factory_girl_rails'
   gem 'mailcatcher'
-end
-
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
 end
