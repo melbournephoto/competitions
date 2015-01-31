@@ -1,2 +1,2 @@
-web: bundle exec unicorn -p 3000
-mailcatcher: bundle exec mailcatcher
+custom_web: bundle exec unicorn_rails -c config/unicorn.rb -E $RAILS_ENV
+web: nginx -g "daemon off;"

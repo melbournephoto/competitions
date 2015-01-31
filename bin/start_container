@@ -4,4 +4,4 @@ set -e
 set -x
 
 bundle exec rake db:migrate
-bundle exec unicorn -p 3000
+bundle exec foreman start

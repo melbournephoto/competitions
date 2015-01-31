@@ -1,7 +1,7 @@
 FROM ruby:2.1.5
 
 RUN apt-get update
-RUN apt-get install -y nodejs
+RUN apt-get install -y nodejs nginx-full
 
 RUN gem update --system
 RUN gem install bundler
