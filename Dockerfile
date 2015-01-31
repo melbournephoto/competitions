@@ -17,4 +17,4 @@ WORKDIR /app
 ENV DATABASE_URL mysql2://localhost/fake
 RUN bundle exec rake assets:precompile
 
-CMD bundle exec unicorn -p 3000
+CMD bin/start_container
