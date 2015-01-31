@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# This script is ran by build, within a docker container
+
+set -e
+set -x
+
+export RAILS_ENV=test
+export DATABASE_URL=mysql2://root:mysecretpassword@$MYSQL_PORT_3306_TCP_ADDR/stack_test
+
+bundle exec rake db:setup
+bundle exec rake
+

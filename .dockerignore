@@ -1,0 +1,4 @@
+.git
+public/uploads
+public/system
+config/database.yml
