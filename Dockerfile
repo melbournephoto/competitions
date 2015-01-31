@@ -12,6 +12,7 @@ ADD Gemfile.lock /gems/Gemfile.lock
 WORKDIR /gems
 RUN bundle install --deployment --path /gems
 ADD . /app
+ADD nginx.conf /etc/nginx/nginx.conf
 
 WORKDIR /app
 ENV DATABASE_URL mysql2://localhost/fake
