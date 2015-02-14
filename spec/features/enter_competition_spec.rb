@@ -45,7 +45,6 @@ describe "entry", :type => :feature do
       expect(page).to have_content 'Red Umbrella'
     end
 
-
     it "tries to upload a photo without a section" do
       CompetitionSeriesGrade.create!(user: @user, competition_series: @open_section.competition_series, grade: @b_grade)
 
@@ -128,7 +127,7 @@ describe "entry", :type => :feature do
     end
   end
   it "enters end of year" do
-    # end of year has one competition with more secitons
+    # end of year has one competition with more sections
     @user = FactoryGirl.create :user, email: 'alan@alanharper.com.au'
     @competition = FactoryGirl.create :competition, title: 'End of Year 2014', entry_limit: 2
     competition_series = FactoryGirl.create(:competition_series)

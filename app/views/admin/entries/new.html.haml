@@ -1,0 +1,18 @@
+= @entry.competition.title
+
+= simple_form_for [:admin, @entry] do |f|
+  = f.input :competition_id, as: :hidden
+
+  = f.input :user_id, collection: User.ordered
+
+  = f.input :title
+
+  - if @entry.new_record?
+    = f.input :section_id, collection: @entry.competition.sections
+
+
+  = f.hidden_field :photo_cache
+  = image_tag @entry.photo.thumb.url
+  = f.input :photo, as: :file
+
+  = f.submit

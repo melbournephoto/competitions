@@ -1,8 +1,32 @@
 class Admin::EntriesController < AdminController
+  def new
+    @entry = Entry.new(competition_id: params[:competition_id])
+  end
+
+  def create
+    @entry = Entry.new(params.require(:entry).permit(:user_id, :title, :section_id, :photo, :competition_id))
+
+    if @entry.section
+      @entry.grade = CompetitionSeriesGrade.find_by(competition_series: @entry.section.competition_series, user: @entry.user).grade
+    end
+
+    if @entry.competition.entry_limit > 0 && @competition.entries.where(user: entry.user).count >= @entry.competition.entry_limit
+      @entry.errors.add(:section_id, 'Competition entry limit reached')
+      render action: 'new'
+      return
+    end
+
+    if @entry.save
+      redirect_to admin_entry_path(@entry)
+    else
+      render action: 'new'
+    end
+  end
+
   def show
     @entry = Entry.find(params[:id])
   end
-  
+
   def edit
     @entry = Entry.find(params[:id])
   end
