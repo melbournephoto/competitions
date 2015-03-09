@@ -17,10 +17,10 @@ gem 'capybara'
 gem 'awesome_print'
 gem 'unicorn'
 gem 'pry'
-gem 'rollbar'
 gem 'rubyzip', '>= 1.0.0'
 gem 'jbuilder'
 gem 'foreman'
+gem 'skylight'
 
 group :development do
   gem 'better_errors'
