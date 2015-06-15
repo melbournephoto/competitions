@@ -8,6 +8,10 @@ set -x
 export RAILS_ENV=test
 export DATABASE_URL=mysql2://root:mysecretpassword@$MYSQL_PORT_3306_TCP_ADDR/stack_test
 
+
+while ! mysqladmin ping -h"$MYSQL_PORT_3306_TCP_ADDR" ; do
+    sleep 1
+done
 bundle exec rake db:setup
 bundle exec rake
 
