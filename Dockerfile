@@ -16,6 +16,7 @@ ADD nginx.conf /etc/nginx/nginx.conf
 
 WORKDIR /app
 ENV DATABASE_URL mysql2://localhost/fake
+ENV RAILS_ENV production
 RUN bundle exec rake assets:precompile
 
 CMD bin/start_container
