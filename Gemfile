@@ -21,6 +21,7 @@ gem 'rubyzip', '>= 1.0.0'
 gem 'jbuilder'
 gem 'foreman'
 gem 'skylight'
+gem 'delayed_job_active_record'
 
 group :development do
   gem 'better_errors'
@@ -39,4 +40,5 @@ group :development, :test do
   gem 'coveralls', require: false
   gem 'factory_girl_rails'
   gem 'mailcatcher'
+  gem 'dotenv-rails'
 end

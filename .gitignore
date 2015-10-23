@@ -19,3 +19,5 @@ coverage
 public/assets
 public/uploads
 public/system
+public/tmp
+
