@@ -2,6 +2,7 @@
 = link_to 'Add Section', new_admin_competition_section_path(@competition)
 = link_to 'E-Mail Judging Link', new_admin_competition_email_judging_link_path(@competition)
 = link_to 'Download Entries', admin_download_competition_path(@competition)
+= link_to 'Download Titled Entries', admin_download_competition_path(@competition, titled: true)
 = link_to 'Add Entry for a User', new_admin_entry_path(competition_id: @competition)
 
 %h1

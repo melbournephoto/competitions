@@ -2,23 +2,24 @@ class Slide
   WIDTH = 1920
   HEIGHT = 1200
   PADDING = 50
-  BACKGROUND_COLOR = '#F6F0A1'
 
-  def initialize(image_height: HEIGHT, image_width: WIDTH)
+  def initialize(image_height: HEIGHT, image_width: WIDTH, background_color: '#F6F0A1', fill_color: 'black')
     @starting_image_height = image_height
     @starting_image_width = image_width
-
+    @background_color = background_color
+    @fill_color = fill_color
   end
 
   def generate(upper_text: [], lower_text: [], image_path: nil)
     @image_height = @starting_image_height
     @image_width = @starting_image_width
-    @base = Magick::Image.new(@image_width, @image_height) { self.background_color = BACKGROUND_COLOR }
+    background_color = @background_color
+    @base = Magick::Image.new(@image_width, @image_height) { self.background_color = background_color }
 
     @text = Magick::Draw.new
     @text.font_family = 'helvetica'
     @text.pointsize = 52
-    @text.fill = 'black'
+    @text.fill = @fill_color
 
     @text.gravity = Magick::NorthGravity
     add_text(upper_text)

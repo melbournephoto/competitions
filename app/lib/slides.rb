@@ -55,4 +55,20 @@ class Slides
 
     Download.complete(email, path).deliver
   end
+
+  def generate_titled_slides(competition, email)
+    path = generate_download_path
+    @slide = Slide.new(background_color: '#000000', fill_color: 'white')
+    Zip::File.open(Rails.root.join('public', path), Zip::File::CREATE) do |zipfile|
+      competition.entries.each do |entry|
+        slide_path = @slide.generate(
+          upper_text: [],
+          lower_text: [entry.user.name + ' - ' + entry.title],
+          image_path: entry.photo.path
+        )
+        zipfile.add(entry.order.to_s + '.jpg', slide_path)
+      end
+    end
+    Download.complete(email, path).deliver
+  end
 end
