@@ -4,6 +4,8 @@ class Admin::DownloadCompetitionsController < AdminController
 
     if params.include?('titled')
       Slides.new.delay.generate_titled_slides(@competition, current_user.email)
+    elsif params.include?('directory')
+      Slides.new.generate_directory_download(@competition, current_user.email)
     else
       Slides.new.delay.generate_monthly(@competition, current_user.email)
     end

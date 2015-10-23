@@ -66,7 +66,17 @@ class Slides
           lower_text: [entry.user.name + ' - ' + entry.title],
           image_path: entry.photo.path
         )
-        zipfile.add(entry.order.to_s + '.jpg', slide_path)
+        zipfile.add(sprintf("%.10d", entry.order) + '.jpg', slide_path)
+      end
+    end
+    Download.complete(email, path).deliver
+  end
+
+  def generate_directory_download(competition, email)
+    path = generate_download_path
+    Zip::File.open(Rails.root.join('public', path), Zip::File::CREATE) do |zipfile|
+      competition.entries.each do |entry|
+        zipfile.add(entry.section.title + '/' + sprintf("%.10d", entry.order) + '.jpg', entry.photo.path)
       end
     end
     Download.complete(email, path).deliver
