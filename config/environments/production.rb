@@ -85,7 +85,7 @@ Competitions::Application.configure do
       :enable_starttls_auto => true, # detects and uses STARTTLS
       :user_name => ENV['SMTP_USERNAME'],
       :password  => ENV['SMTP_PASSWORD'], # SMTP password is any valid API key
-      :authentication => 'login', # Mandrill supports 'plain' or 'login'
+      :authentication => :plain,
       :domain => ENV['SMTP_DOMAIN'], # your domain to identify your server when connecting
   }
   config.action_mailer.default_url_options = { host: ENV['WEB_HOSTNAME'] }
