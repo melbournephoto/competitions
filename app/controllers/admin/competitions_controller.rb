@@ -1,3 +1,5 @@
+require 'csv'
+
 class Admin::CompetitionsController < ApplicationController
   def index
     @competitions = Competition.all.ordered
@@ -5,6 +7,18 @@ class Admin::CompetitionsController < ApplicationController
 
   def show
     @competition = Competition.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.csv do
+        csv_string = CSV.generate do |csv|
+          @competition.entries.each do |entry|
+            csv << [sprintf('%.10d', entry.order) + '.jpg', entry.title, entry.section.title, entry.user.name]
+          end
+        end
+
+        render text: csv_string
+      end
+    end
   end
 
   def new
