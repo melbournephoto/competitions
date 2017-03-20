@@ -6,7 +6,6 @@ gem 'mysql2'
 gem 'sass-rails', '~> 4.0.0'
 gem 'bootstrap-sass', '~> 3.0.2.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 gem 'devise', '~> 3.2.0'
 gem 'haml-rails'
@@ -20,7 +19,6 @@ gem 'pry'
 gem 'rubyzip', '>= 1.0.0'
 gem 'jbuilder'
 gem 'foreman'
-gem 'skylight'
 gem 'delayed_job_active_record'
 
 group :development do
