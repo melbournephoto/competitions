@@ -12,4 +12,5 @@ class Section < ActiveRecord::Base
   validates :entry_limit, presence: true, numericality: true
   validates :max_height, presence: true, numericality: true
   validates :max_width, presence: true, numericality: true
+  validates :order, presence: true, uniqueness: {scope: :competition_id}
 end

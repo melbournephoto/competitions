@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151022225104) do
+ActiveRecord::Schema.define(version: 20171105000942) do
 
   create_table "competition_series", force: true do |t|
     t.string   "title"
@@ -118,6 +118,7 @@ ActiveRecord::Schema.define(version: 20151022225104) do
     t.integer  "order",                 default: 0, null: false
   end
 
+  add_index "sections", ["competition_id", "order"], name: "index_sections_on_competition_id_and_order", unique: true, using: :btree
   add_index "sections", ["competition_id"], name: "index_sections_on_competition_id", using: :btree
   add_index "sections", ["competition_series_id"], name: "index_sections_on_competition_series_id", using: :btree
 
