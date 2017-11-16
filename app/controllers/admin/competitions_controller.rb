@@ -11,12 +11,13 @@ class Admin::CompetitionsController < ApplicationController
       format.html
       format.csv do
         csv_string = CSV.generate do |csv|
+          csv << ["filename", "entry title", "section", "entrant"]
           @competition.entries.each do |entry|
             csv << [sprintf('%.10d', entry.order) + '.jpg', entry.title, entry.section.title, entry.user.name]
           end
         end
 
-        render text: csv_string
+        send_data csv_string, filename: @competition.title + '.csv'
       end
     end
   end
