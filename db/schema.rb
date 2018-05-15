@@ -13,16 +13,16 @@
 
 ActiveRecord::Schema.define(version: 20171105000942) do
 
-  create_table "competition_series", force: true do |t|
-    t.string   "title"
+  create_table "competition_series", force: :cascade do |t|
+    t.string   "title",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "competition_series_grades", force: true do |t|
-    t.integer  "competition_series_id", null: false
-    t.integer  "grade_id",              null: false
-    t.integer  "user_id",               null: false
+  create_table "competition_series_grades", force: :cascade do |t|
+    t.integer  "competition_series_id", limit: 4, null: false
+    t.integer  "grade_id",              limit: 4, null: false
+    t.integer  "user_id",               limit: 4, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -31,48 +31,48 @@ ActiveRecord::Schema.define(version: 20171105000942) do
   add_index "competition_series_grades", ["grade_id"], name: "index_competition_series_grades_on_grade_id", using: :btree
   add_index "competition_series_grades", ["user_id"], name: "index_competition_series_grades_on_user_id", using: :btree
 
-  create_table "competitions", force: true do |t|
-    t.string   "title"
+  create_table "competitions", force: :cascade do |t|
+    t.string   "title",                limit: 255
     t.datetime "entries_open_at"
     t.datetime "entries_close_at"
     t.datetime "results_published_at"
-    t.string   "judge_key"
-    t.text     "notes"
+    t.string   "judge_key",            limit: 255
+    t.text     "notes",                limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "entry_limit",          default: 0, null: false
+    t.integer  "entry_limit",          limit: 4,     default: 0, null: false
   end
 
-  create_table "delayed_jobs", force: true do |t|
-    t.integer  "priority",   default: 0, null: false
-    t.integer  "attempts",   default: 0, null: false
-    t.text     "handler",                null: false
-    t.text     "last_error"
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   limit: 4,     default: 0, null: false
+    t.integer  "attempts",   limit: 4,     default: 0, null: false
+    t.text     "handler",    limit: 65535,             null: false
+    t.text     "last_error", limit: 65535
     t.datetime "run_at"
     t.datetime "locked_at"
     t.datetime "failed_at"
-    t.string   "locked_by"
-    t.string   "queue"
+    t.string   "locked_by",  limit: 255
+    t.string   "queue",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
-  create_table "entries", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "competition_id"
-    t.integer  "section_id"
-    t.integer  "rating_id"
-    t.integer  "grade_id"
-    t.string   "title"
-    t.string   "photo"
-    t.text     "notes"
-    t.integer  "order",           null: false
-    t.integer  "photo_file_size"
-    t.integer  "photo_width"
-    t.integer  "photo_height"
-    t.text     "exif"
+  create_table "entries", force: :cascade do |t|
+    t.integer  "user_id",         limit: 4
+    t.integer  "competition_id",  limit: 4
+    t.integer  "section_id",      limit: 4
+    t.integer  "rating_id",       limit: 4
+    t.integer  "grade_id",        limit: 4
+    t.string   "title",           limit: 255
+    t.string   "photo",           limit: 255
+    t.text     "notes",           limit: 65535
+    t.integer  "order",           limit: 4,     null: false
+    t.integer  "photo_file_size", limit: 4
+    t.integer  "photo_width",     limit: 4
+    t.integer  "photo_height",    limit: 4
+    t.text     "exif",            limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deleted_at"
@@ -81,61 +81,62 @@ ActiveRecord::Schema.define(version: 20171105000942) do
   add_index "entries", ["competition_id"], name: "index_entries_on_competition_id", using: :btree
   add_index "entries", ["deleted_at"], name: "index_entries_on_deleted_at", using: :btree
   add_index "entries", ["grade_id"], name: "index_entries_on_grade_id", using: :btree
+  add_index "entries", ["order"], name: "index_entries_on_order", using: :btree
   add_index "entries", ["section_id"], name: "index_entries_on_section_id", using: :btree
   add_index "entries", ["user_id"], name: "index_entries_on_user_id", using: :btree
 
-  create_table "grades", force: true do |t|
-    t.integer  "competition_series_id"
-    t.string   "title"
-    t.integer  "order",                 default: 0, null: false
+  create_table "grades", force: :cascade do |t|
+    t.integer  "competition_series_id", limit: 4
+    t.string   "title",                 limit: 255
+    t.integer  "order",                 limit: 4,   default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "grades", ["competition_series_id"], name: "index_grades_on_competition_series_id", using: :btree
 
-  create_table "ratings", force: true do |t|
-    t.string   "title"
-    t.integer  "points",              default: 0, null: false
-    t.integer  "max_per_grade",       default: 0, null: false
-    t.integer  "max_per_competition", default: 0, null: false
-    t.integer  "order",               default: 0, null: false
+  create_table "ratings", force: :cascade do |t|
+    t.string   "title",               limit: 255
+    t.integer  "points",              limit: 4,   default: 0, null: false
+    t.integer  "max_per_grade",       limit: 4,   default: 0, null: false
+    t.integer  "max_per_competition", limit: 4,   default: 0, null: false
+    t.integer  "order",               limit: 4,   default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "short"
+    t.string   "short",               limit: 255
   end
 
-  create_table "sections", force: true do |t|
-    t.integer  "competition_series_id"
-    t.integer  "competition_id"
-    t.string   "title"
-    t.integer  "entry_limit"
-    t.integer  "max_height"
-    t.integer  "max_width"
-    t.integer  "max_file_size"
+  create_table "sections", force: :cascade do |t|
+    t.integer  "competition_series_id", limit: 4
+    t.integer  "competition_id",        limit: 4
+    t.string   "title",                 limit: 255
+    t.integer  "entry_limit",           limit: 4
+    t.integer  "max_height",            limit: 4
+    t.integer  "max_width",             limit: 4
+    t.integer  "max_file_size",         limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "order",                 default: 0, null: false
+    t.integer  "order",                 limit: 4,   default: 0, null: false
   end
 
   add_index "sections", ["competition_id", "order"], name: "index_sections_on_competition_id_and_order", unique: true, using: :btree
   add_index "sections", ["competition_id"], name: "index_sections_on_competition_id", using: :btree
   add_index "sections", ["competition_series_id"], name: "index_sections_on_competition_series_id", using: :btree
 
-  create_table "users", force: true do |t|
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
-    t.string   "reset_password_token"
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  limit: 255, default: "",    null: false
+    t.string   "encrypted_password",     limit: 255, default: "",    null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0
+    t.integer  "sign_in_count",          limit: 4,   default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.boolean  "admin",                  default: false, null: false
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.string   "first_name",             limit: 255
+    t.string   "last_name",              limit: 255
+    t.boolean  "admin",                              default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
