@@ -8,6 +8,8 @@
 = link_to 'Download grouped by section', admin_download_competition_path(@competition, directory: true), class: 'btn btn-default'
 = link_to 'Download entry CSV', admin_competition_path(@competition, format: :csv), class: 'btn btn-default'
 
+%h2 Judging Link
+= text_field_tag :judging_url, judging_session_url(@competition.judge_key), size: 100
 %h1
   Competition:
   = @competition.title
