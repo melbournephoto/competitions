@@ -11,6 +11,7 @@ test:
   database: competitions_test
   pool: 5
   username: root
+  host: <%= ENV['DB_HOST'] || 'localhost' %>
 
 production:
   adapter: mysql2
