@@ -10,7 +10,7 @@ describe "entry", :type => :feature do
       @open_section = @competition.sections.create!(title: 'Open', max_file_size: 1, max_width: 1200, max_height: 1200, entry_limit: 1,
         competition_series: open_competition_series)
       @people_section = @competition.sections.create!(title: 'Sunshine', max_file_size: 1, max_width: 1200, max_height: 1200, entry_limit: 1,
-        competition_series: set_subject_competition_series)
+        competition_series: set_subject_competition_series, order: 1)
       @a_grade = FactoryGirl.create :grade, title: 'A Grade', competition_series: open_competition_series
       @b_grade = FactoryGirl.create :grade, title: 'B Grade', competition_series: open_competition_series
       @set_subject_grade = FactoryGirl.create :grade, title: 'B Grade', competition_series: set_subject_competition_series
@@ -20,7 +20,7 @@ describe "entry", :type => :feature do
 
       fill_in 'Email', with: @user.email
       fill_in 'Password', with: @user.password
-      click_button 'Sign in'
+      click_button 'Log in'
     end
 
     it "uploads a valid file with no grade set" do
@@ -134,9 +134,9 @@ describe "entry", :type => :feature do
     @open_section = @competition.sections.create!(title: 'Open', max_file_size: 2, max_width: 2000, max_height: 1200, entry_limit: 1,
       competition_series: competition_series)
     @people_section = @competition.sections.create!(title: 'People', max_file_size: 2, max_width: 2000, max_height: 1200, entry_limit: 1,
-      competition_series: competition_series)
+      competition_series: competition_series, order: 1)
     @nature_section = @competition.sections.create!(title: 'Nature', max_file_size: 2, max_width: 2000, max_height: 1200, entry_limit: 1,
-      competition_series: competition_series)
+      competition_series: competition_series, order: 2)
     @a_grade = FactoryGirl.create :grade, title: 'A Grade', competition_series: competition_series
     @b_grade = FactoryGirl.create :grade, title: 'B Grade', competition_series: competition_series
     @set_subject_grade = FactoryGirl.create :grade, title: 'B Grade', competition_series: competition_series
@@ -148,7 +148,7 @@ describe "entry", :type => :feature do
 
     fill_in 'Email', with: @user.email
     fill_in 'Password', with: @user.password
-    click_button 'Sign in'
+    click_button 'Log in'
 
     click_link 'Competitions'
     click_link 'End of Year 2014'

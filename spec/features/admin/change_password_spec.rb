@@ -10,7 +10,7 @@ describe "admin change password", :type => :feature do
 
     fill_in 'Email', with: @admin.email
     fill_in 'Password', with: @admin.password
-    click_button 'Sign in'
+    click_button 'Log in'
 
     visit '/admin/users'
     find(:xpath, "//tr[td[contains(.,'Alice')]]/td/a", :text => 'Edit').click
@@ -22,7 +22,7 @@ describe "admin change password", :type => :feature do
 
     fill_in 'Email', with: @user.email
     fill_in 'Password', with: 'newpassword'
-    click_button 'Sign in'
+    click_button 'Log in'
 
     expect(page).to have_content 'Signed in successfully'
   end
@@ -36,7 +36,7 @@ describe "admin change password", :type => :feature do
 
     fill_in 'Email', with: @admin.email
     fill_in 'Password', with: @admin.password
-    click_button 'Sign in'
+    click_button 'Log in'
 
     visit '/admin/users'
     find(:xpath, "//tr[td[contains(.,'Alice')]]/td/a", :text => 'Edit').click
@@ -46,7 +46,7 @@ describe "admin change password", :type => :feature do
 
     fill_in 'Email', with: @user.email
     fill_in 'Password', with: @user.password
-    click_button 'Sign in'
+    click_button 'Log in'
 
     expect(page).to have_content 'Signed in successfully'
   end
